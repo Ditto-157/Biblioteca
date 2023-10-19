@@ -1,0 +1,105 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section main{
+    <style>
+
+        .conteudo{
+            display: flex;
+            flex-direction:column;
+
+        }
+
+        .rt_ct{
+            display: flex;
+            flex-direction: column;
+
+
+        }
+        
+        .cr{
+            margin-top: 2%;
+            margin-left: 2%;
+            
+        }
+
+        input{
+            width: 90%;
+            height: 35%;
+            border-radius: 10px;
+           
+        }
+
+        .tcad{
+            margin: 2%;
+            
+        }
+
+        .btn{
+           width: 10%;
+           height: 5%;
+           margin-top: 4%;
+           margin-left: 80%;
+           background-color: green;
+           border-radius: 10px;
+           font-size: 1vw;
+           text-align: center;
+        }
+
+    </style>
+
+    <h3 class="tcad">Cadastro</h3>
+
+    <div class="cr"><h2>Nome*</h2>
+     <input type="text" />    
+    </div>
+
+    <div class="cr">
+        <h2>RG*</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>Data de Nascimento*</h2>
+        <input type="text" />
+    </div>
+
+     <div class="cr"><h2>Email*</h2>
+     <input type="text" />    
+    </div>
+
+     <div class="cr"><h2>Local de Nascimento*</h2>
+     <input type="text" />    
+    </div>
+
+    <div class="cr">
+        <h2>Residência</h2>
+        <input type="text" />
+    </div>
+
+    <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro2">Próximo</a>
+
+}
+
+@section pesquisa{
+    <style>
+        .pesquisa {
+            display: none;
+        }
+
+    </style>
+}
+
+@section conteudo {
+    <style>
+        .ct {
+            display:none;
+        }
+
+    </style>
+
+
+} 

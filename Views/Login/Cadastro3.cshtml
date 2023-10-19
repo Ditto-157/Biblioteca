@@ -1,0 +1,104 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section main {
+    <style>
+        .conteudo{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rt_ct {
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2{
+            font-size: 2vw;
+            margin-left: 2%;
+            margin-top: 1%;
+        }
+
+        .rt_en{
+            width: 90%;
+            height: 20%;
+            border: 1px solid black;
+            margin-top: 2%;
+            margin-left: 3%;
+            border-radius: 10px;
+        }
+
+        .arq{
+            margin-left: 2%;
+            margin-top: 3%;
+        }
+
+        .btns {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 2%;
+            align-items: center;
+        }
+
+        .btn {
+            width: 20%;
+            height: 3em;
+            background-color: green;
+            border-radius: 10px;
+            font-size: 1vw;
+            text-align: center;
+        }
+
+
+    </style>
+
+    <h3 class="tcad">Cadastro</h3>
+
+    <div class="rt_en"> 
+        <h2>Envie uma foto da frente do seu RG*</h2>
+        <input class="arq" type="file" />
+    </div>
+
+    <div class="rt_en">
+        <h2>Envie uma foto do verso do seu RG*</h2>
+        <input class="arq" type="file" />
+    </div>
+
+    <div class="rt_en">
+        <h2>Envie uma foto de um comprovante de residência recente(até três meses)*</h2>
+        <input class="arq" type="file" />
+    </div>
+
+    <div class="btns">
+
+        <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro2">Anterior</a>
+
+        <a class="btn" asp-area="" asp-controller="Login" asp-action="Login">Próximo</a>
+
+    </div>
+
+}
+
+@section pesquisa{
+    <style>
+        .pesquisa {
+            display: none;
+        }
+
+    </style>
+}
+
+@section conteudo {
+    <style>
+        .ct {
+            display: none;
+        }
+
+    </style>
+
+
+} 

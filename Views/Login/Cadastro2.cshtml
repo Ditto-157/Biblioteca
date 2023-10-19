@@ -1,0 +1,116 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@section main{
+    <style>
+
+        .conteudo {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .rt_ct {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cr {
+            margin-top: 2%;
+            margin-left: 2%;
+        }
+
+        input {
+            width: 90%;
+            height: 35%;
+            border-radius: 10px;
+        }
+
+        .tcad {
+            margin: 2%;
+        }
+
+        .btns{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            margin-top: 2%;
+            align-items: center;
+        }
+
+        .btn {
+            width: 20%;
+            height: 3em;
+            background-color: green;
+            border-radius: 10px;
+            font-size: 1vw;
+            text-align: center;
+        }
+
+       
+
+    </style>
+
+    <h3 class="tcad">Cadastro</h3>
+
+    <div class="cr">
+        <h2>Telefone Pessoal*</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>CEP*</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>Profissâo</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>Telefone profissional</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>Escola</h2>
+        <input type="text" />
+    </div>
+
+    <div class="cr">
+        <h2>Curso\Série</h2>
+        <input type="text" />
+    </div>
+
+    <div class="btns">
+
+    <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro">Anterior</a>
+
+    <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro3">Próximo</a>
+
+    </div>
+
+}
+
+@section pesquisa{
+    <style>
+        .pesquisa {
+            display: none;
+        }
+
+    </style>
+}
+
+@section conteudo {
+    <style>
+        .ct {
+            display: none;
+        }
+
+    </style>
+
+
+} 

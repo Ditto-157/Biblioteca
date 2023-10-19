@@ -1,0 +1,106 @@
+﻿
+@{
+    
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    
+}
+
+@model List<Biblioteca.Models.LivroModel>
+
+@section main{
+
+    <link href="~/lib/fontawesome/css/all.min.css" rel="stylesheet" />
+    
+    @await Component.InvokeAsync("Pesquisa")
+
+    <style>
+        .filtro{
+            display: flex;
+            flex-direction: row;
+            margin: 2%;
+            justify-content: flex-start;
+            align-items: flex-start;
+            margin-right: 78%;
+        }
+
+        .inputs{
+            display: flex;
+            flex-direction: row-reverse;
+            flex-grow: 1;
+        }
+
+        #pq{
+            width: 40vw;
+            border-radius: 20px;
+            height: 30%;
+            margin: 2%;
+        }
+
+        .btnpq{
+            margin-top: 60%;
+            border: none;
+        }
+
+        
+
+    </style>
+
+    
+
+}
+
+@section conteudo{
+
+    <style> 
+        lì{
+            color: black;
+        }
+
+    </style>
+
+  @await Component.InvokeAsync("Livro")
+
+   
+    
+   
+
+   
+
+    <style>
+        .lista{
+            display: flex;
+            flex-direction:column;
+        }
+        .lt{
+            margin-top: 1%;
+            width: 58vw;
+            color: white;
+            background-color: #003666;
+            display:flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            font-size: 1vw 1vh;
+            border-radius: 5px;
+        }
+
+        .livro-acao{
+            display:flex;
+            align-items: center;
+            
+        }
+
+        .btn-solicitar{
+            margin-left:auto;
+            background-color: #009933;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
+    </style>
+}
