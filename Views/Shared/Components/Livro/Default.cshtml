@@ -53,7 +53,7 @@
     <ul class="lista">
         @foreach (var livro in Model)
         {
-            <li class="lt">@livro.Autor - @livro.Assunto - @livro.Titulo <button type="submit" class="btn-solicitar">Solicitar emprestimo</button></li>
+            <li class="lt">@livro.Autor - @livro.Assunto - @livro.Titulo @if (NumEmp > 0) { <button type="submit" class="btn-solicitar">Solicitar emprestimo</button>} else{ <p>Indisponivel</p> }</li>
         }
     </ul>
 }

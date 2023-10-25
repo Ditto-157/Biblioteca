@@ -4,15 +4,4 @@
 @{
 }
 
-@model string
-
-<form method="get" asp-controller=" Pesquisa" asp-action="Pesquisa">
-    <div class="inputs">
-        <input type="text" name="pq" />
-
-    </div>
-        <button type="submit">Pesquisar</button>
-
-</form>
-
-@if (Model.
+@model List<Biblioteca.Models.LivroModel>

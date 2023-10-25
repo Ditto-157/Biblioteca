@@ -9,9 +9,9 @@ namespace Biblioteca.Models
 
         public required string Titulo { get; set; }
 
-        public required string Autor { get; set; }
+        public string Autor { get; set; }
 
-        public required string Assunto { get; set; }
+        public  string Assunto { get; set; }
 
         public int NumEmp { get; set; }
 
