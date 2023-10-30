@@ -2,96 +2,36 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    Layout = "~/Views/Shared/_Layoutct.cshtml";
 }
 
 @section main{
-    <style>
 
-        .conteudo {
-            display: flex;
-            flex-direction: column;
-        }
+    <h3>Cadastro</h3>
 
-        .rt_ct {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .cr {
-            margin-top: 2%;
-            margin-left: 2%;
-        }
-
-        input {
-            width: 90%;
-            height: 35%;
-            border-radius: 10px;
-        }
-
-        .tcad {
-            margin: 2%;
-        }
-
-        .btns{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            margin-top: 2%;
-            align-items: center;
-        }
-
-        .btn {
-            width: 20%;
-            height: 3em;
-            background-color: green;
-            border-radius: 10px;
-            font-size: 1vw;
-            text-align: center;
-        }
-
-       
-
-    </style>
-
-    <h3 class="tcad">Cadastro</h3>
-
-    <div class="cr">
-        <h2>Telefone Pessoal*</h2>
-        <input type="text" />
+    <div class="mb-3 w-75">
+        <label for="" class="form-label">Telefone Pessoal*</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="" class="form-label">CEP*</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="" class="form-label">Profissão*</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="" class="form-label">Telefone Profissional</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="" class="form-label">Escola</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+        <label for="" class="form-label">Curso/Série</label>
+        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
     </div>
 
-    <div class="cr">
-        <h2>CEP*</h2>
-        <input type="text" />
+    <div class="d-flex justify-content-sm-around">
+        <a name="" id="" class="btn btn-primary btn-success" role="button" asp-area="" asp-controller="Login" asp-action="Cadastro">Anterior</a>
+        <a name="" id="" class="btn btn-primary btn-success" role="button" asp-area="" asp-controller="Login" asp-action="Cadastro3">Próximo</a>
     </div>
 
-    <div class="cr">
-        <h2>Profissâo</h2>
-        <input type="text" />
-    </div>
 
-    <div class="cr">
-        <h2>Telefone profissional</h2>
-        <input type="text" />
-    </div>
 
-    <div class="cr">
-        <h2>Escola</h2>
-        <input type="text" />
-    </div>
 
-    <div class="cr">
-        <h2>Curso\Série</h2>
-        <input type="text" />
-    </div>
-
-    <div class="btns">
-
-    <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro">Anterior</a>
-
-    <a class="btn" asp-area="" asp-controller="Login" asp-action="Cadastro3">Próximo</a>
-
-    </div>
 
 }
 

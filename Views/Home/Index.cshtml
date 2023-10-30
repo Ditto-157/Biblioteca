@@ -7,7 +7,7 @@
     
 }
 
-@model List<Biblioteca.Models.LivroModel>
+
 
 @section main{
 
@@ -15,7 +15,21 @@
     
     
 
-    
+    <div class="input-group w-75 m-1">
+
+        <button class="btn btn-outline-secondary" type="button" id="button-addon1">Pesquisar</button>
+
+        <input type="text" class="form-control" placeholder="Pesquisar Livros" aria-label="Example text with button addon" aria-describedby="button-addon1">
+    </div>
+
+    <div class="dropdown me-5">
+
+        <button class="btn btn-secondary dropdown-toggle d-flex flex-row justify-content-start " type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Assuntos
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">E isso</ul>
+
+    </div>
 
     <style>
         .filtro{
@@ -55,54 +69,36 @@
 
 @section conteudo{
 
-    <style> 
-        lì{
-            color: black;
-        }
+@model List<LivroModel>
 
-    </style>
+  <table id="Livros" class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Assunto</th>
+        </tr>
+    </thead>
+    <tbody>
 
-  @await Component.InvokeAsync("Livro")
-  
-   
-    
-   
-
-   
-
-    <style>
-        .lista{
-            display: flex;
-            flex-direction:column;
-        }
-        .lt{
-            margin-top: 1%;
-            width: 58vw;
-            color: white;
-            background-color: #003666;
-            display:flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            text-align: center;
-            font-size: 1vw 1vh;
-            border-radius: 5px;
-        }
-
-        .livro-acao{
-            display:flex;
-            align-items: center;
+        @if(Model != null)
+        {
             
+            @foreach(var livro in Model)
+            {
+                <tr>
+                    <th scope="row">Berserk</th>
+                    <th>@livro.Autor</th>
+                    <th>@livro.Assunto</th>
+                </tr>
+            }
         }
+    </tbody>
+ </table>
 
-        .btn-solicitar{
-            margin-left:auto;
-            background-color: #009933;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
 
-    </style>
+
+
+   
+
 }

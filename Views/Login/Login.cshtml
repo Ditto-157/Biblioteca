@@ -33,7 +33,7 @@
        
 
        .fl{
-           width: 70%;
+           width: 4rem;
            height:20%;
            border-radius: 10px;
            margin-top: 0.2%;
@@ -71,9 +71,9 @@
         <p>@ViewBag.Mensagem</p>
     </div>
     }
-    <div class="rt_lg">
+    <div class="rt_lg dp-flex">
         <h3>Fazer login</h3>
-        @Html.TextBoxFor(model => model.RG, new {@class = "fl"})
+        @Html.TextBoxFor(model => model.RG, new {@class = "fl w-75"})
         <button type="submit" class="btn_login">Fazer login</button>
     </div>
     <h2>Se não possui cadastro!<a class="cad" asp-area="" asp-controller="Login" asp-action="Cadastro">Clique aqui</a></h2>

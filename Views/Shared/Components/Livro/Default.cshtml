@@ -7,53 +7,31 @@
 
 @model List<Biblioteca.Models.LivroModel>
 
-    <style>
+   
 
-    <style >
-    .lista {
-        display: flex;
-        flex-direction: column;
-    }
 
-    .lt {
-        margin-top: 1%;
-        width: 58vw;
-        color: white;
-        background-color: #003666;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        text-align: center;
-        font-size: 1vw 1vh;
-        border-radius: 5px;
-    }
+ <table class="table-livros table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Assunto</th>
+        </tr>
+    </thead>
+    <tbody>
 
-    .livro-acao {
-        display: flex;
-        align-items: center;
-    }
-
-    .btn-solicitar {
-        margin-left: auto;
-        background-color: #009933;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        margin-right: 5px;
-    }
-
-</style>
-
-    </style>
-
-@if (Model != null)
-{
-
-    <ul class="lista">
-        @foreach (var livro in Model)
+        @if(Model != null)
         {
-            <li class="lt">@livro.Autor - @livro.Assunto - @livro.Titulo @if (NumEmp > 0) { <button type="submit" class="btn-solicitar">Solicitar emprestimo</button>} else{ <p>Indisponivel</p> }</li>
+            
+            @foreach(var livro in Model)
+            {
+                <tr>
+                    <th scope="row">@livro.Titulo</th>
+                    <th>@livro.Autor</th>
+                    <th>@livro.Assunto</th>
+                </tr>
+            }
         }
-    </ul>
-}
+    </tbody>
+ </table>
+
