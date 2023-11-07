@@ -2,4 +2,4 @@
 git init
 git add .
 git commit -m %1
-git pull https://github.com/ditto-157/Biblioteca
+git push https://github.com/ditto-157/Biblioteca
