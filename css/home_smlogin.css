@@ -10,15 +10,26 @@ header{
 
 footer{
     background-color: #003366;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 .nav{
     background-color: #6666; 
 }
 
+.table{
+    overflow-y: auto;
+    height: 20%;
+}
 
 
 .buttons :hover{
     background-color: rgb(7, 175, 7);
     transition: 0.3s;
+}
+
+#pagination li {
+    margin: 0.75em;
 }

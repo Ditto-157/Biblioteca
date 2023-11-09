@@ -22,37 +22,39 @@
   </header>
   <nav>
     <div class=" nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
-      <a class="btn text-white  buttons" href="home_smlogin.html">Home</a>
-      <a class="btn text-white  buttons" href="login.html">Login</a>
+      <a class="btn text-white  buttons" href="home_logado.html">Home</a>
+      <a class="btn text-white buttons" href="emprestimos.html">Empréstimos</a>
+      <a class="btn text-white buttons" href="conta.html">Conta</a>
+      <a class="btn text-white buttons" href="favoritos.html">Favoritos</a>
       <a class="btn text-white buttons" href="#">Sobre</a>
   </div>
     </div>
   </nav>
   <main>
     <div class=" input-group mb-3 my-3 w-75 container">
-
-        <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes" aria-label="Pesquisar">
-        <button id="btn-pesquisar" class="btn btn-outline-success">Pesquisar</button>
+        
+        <input id="pesquisa" class="form-control me-2 " type="search" placeholder=" Livros Recentes" aria-label="Pesquisar">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
         
     </div>
     <div class="input-group p-1">
-        <div class="dropdown  me-2" id="assuntoDrop">
-            <button class="btn btn-primary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Assunto
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item" data-value="">Assuntos</li>
-            </ul>
-          </div>
-          <div class="dropdown" id="autorDrop">
-            <button class="btn btn-primary dropdown-toggle "  type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Autor
-            </button>
-            <ul class="dropdown-menu ">
-              <li class="dropdown-item" data-value="">Autores</li>
-            </ul>
-          </div>
-    </div>
+      <div class="dropdown  me-2" id="assuntoDrop">
+          <button class="btn btn-primary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Assunto
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" data-value="">Assuntos</li>
+          </ul>
+        </div>
+        <div class="dropdown" id="autorDrop">
+          <button class="btn btn-primary dropdown-toggle "  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Autor
+          </button>
+          <ul class="dropdown-menu ">
+            <li class="dropdown-item" data-value="">Autores</li>
+          </ul>
+        </div>
+  </div>
 
     <div>
         <div class="table-responsive overflow-auto h-50">
@@ -71,7 +73,7 @@
             </table>
             <nav>
               <ul class="pagination" id="pagination">
-              
+                 
               </ul>
           </nav>
         </div>
