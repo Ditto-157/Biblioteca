@@ -13,20 +13,22 @@ function checkIfUserExist() {
         })
     })
 
-    .then((response) => response.text())
+    .then((response) => response.json())
     .then ((data) => {
-        if (data.match('User not found')) {
-            console.log('Not found')
+        let flash = document.getElementById("flash-message");
+        if (data.message) {
+            console.log(data);
+            flash.classList.remove('d-none');
         } else {
             console.log('Found');
-            let user = JSON.parse(data);
+            flash.classList.add('d-none');
+            let user = data;
             let user_keys = Object.keys(user);
             let user_values = Object.values(user);
             for (let i = 0; i < user_keys.length; i++) {
                 console.log(user_keys[i], user_values[i])
-                localStorage.setItem(user_keys[i], user_values[i])
+                sessionStorage.setItem(user_keys[i], user_values[i])
             }
-            console.log(document.cookie)
         }
     });
 

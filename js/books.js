@@ -1,4 +1,4 @@
-var itemsPerPage = 5;
+var itemsPerPage = 24;
 
 function fillTable(page, livros) {
     var startIndex = (page - 1) * itemsPerPage;
@@ -30,6 +30,8 @@ function setupPagination(livros) {
     for (var i = 1; i <= totalPages; i++) {
         var li = document.createElement("li");
         var a = document.createElement("a");
+        li.classList.add("page-item");
+        a.classList.add("page-link");
         a.href = "#";
         a.innerHTML = i;
 
@@ -42,6 +44,7 @@ function setupPagination(livros) {
         pagination.appendChild(li);
     }
 }
+
 
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/books'
 const data = { key: 'f1563cb61eaf857ce3042c12cd94e774'};

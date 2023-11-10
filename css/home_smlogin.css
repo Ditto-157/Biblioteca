@@ -10,9 +10,6 @@ header{
 
 footer{
     background-color: #003366;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
 }
 
 .nav{
