@@ -31,7 +31,7 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-12">
-          <form id="cadastro-form" onsubmit="return sendData()" method="POST">
+          <form id="cadastro-form" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="key" id="api-key">
             <div id="cadastro1" class="mb-3" >
               <h1>Cadastro 1/3</h1>
@@ -50,7 +50,7 @@
               <input id="residencia" type="text" name="residencia" class="form-control" placeholder="Residência" required>
               
               <div class="d-flex justify-content-center m-3">
-                <button class="btn-primary btn" onclick="changePage(1, 2)">Proxima</button>
+                <button class="btn-primary btn" onclick="changeToNextPage(1, 2)">Proxima</button>
               </div>
             </div>
             <div id="cadastro2" style="display: none;" class="mb-3">
@@ -70,8 +70,8 @@
               <input id="curso" type="text" name="curso_serie" class="form-control" placeholder="Curso/Série">
               
               <div class="d-flex justify-content-center m-3">
-                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changePage(2, 1)">Anterior</button>
-                <button class="btn-primary btn" onclick="changePage(2, 3)">Proxima</button>
+                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changeToBackPage(1)">Anterior</button>
+                <button class="btn-primary btn" onclick="changeToNextPage(2, 3)">Proxima</button>
               </div>
             </div>
             <div id="cadastro3" style="display: none;" class="mb-3">
@@ -85,7 +85,7 @@
               <input id="comprovante" type="file" class="form-control" name="comprovante" placeholder="Comprovante" required>
               
               <div class="d-flex justify-content-center m-3">
-                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changePage(3, 2)">Anterior</button>
+                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changeToBackPage(2)">Anterior</button>
                 <input type="submit" value="Finalizar cadastro" class="btn-primary btn">
               </div>
             </div>
