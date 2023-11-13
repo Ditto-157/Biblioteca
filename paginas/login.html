@@ -10,7 +10,6 @@
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <script src="../js/login.js"></script>
 </head>
 
 <body>
@@ -21,20 +20,19 @@
   <nav>
     
     <div class=" nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
-        <a class="btn text-white  buttons" href="home_smlogin.html">Home</a>
-        <a class="btn text-white  buttons" href="login.html">Login</a>
+        <link rel="stylesheet" href="../css/base.css">
         <a class="btn text-white buttons" href="#">Sobre</a>
     </div>
   </nav>
   <main>
     <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none" >RG não encontrado</div>
     <div class="mb-3 d-flex flex-column m-4">
-      <label for="" class="form-label">Fazer Login</label>
-      <input type="text" name="" id="input-RG" class="form-control w-75" placeholder="" aria-describedby="helpId">   
+      <label for="" class="form-label d-flex" style="margin-left: 10%">Fazer Login</label>
+      <input type="text" name="" id="input-RG" class="form-control w-75 d-flex" style="margin-left: 10%" placeholder="1234567890-0" aria-describedby="helpId">   
     </div>
-    <button name="" id="" class="btn btn-primary ms-4 btn-success" onclick="checkIfUserExist()" role="button">Login</button>
+    <button name="" id="" class="btn btn-primary btn-success d-flex" style="margin-left: 12.5%" onclick="checkIfUserExist()" role="button">Login</button>
     <div class="d-flex justify-content-center">
-        <p>Se não possuir conta.<a href="cadastro.html">Criar conta</a></p>
+        <p>Se não possuir uma conta, <a href="cadastro.html">crie uma.</a></p>
     </div>
   </main>
   <footer class="text-white d-flex flex-column justify-content-center align-items-center">
@@ -51,6 +49,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
+
+  <script src="../js/login.js"></script>
+  
 </body>
 
 </html>

@@ -85,7 +85,6 @@ function changeToNextPage(current_page, next_page) {
 }
 
 form.addEventListener('submit', (event) => {
-    console.log('On send data');
 
     event.preventDefault();
 
@@ -93,11 +92,13 @@ form.addEventListener('submit', (event) => {
         return false;
     }
     
-    var url = "http://10.0.0.109:8080/user/new";
+    var url = "https://apibiblioteca.2.ie-1.fl0.io/user/new";
 
     var formData = new FormData(form);
     
     console.log(formData.get('RG_frente').type)
+    console.log(formData.get('RG_verso').type)
+    console.log(formData.get('comprovante').type)
 
     if (
         !formData.get('RG_frente').type.startsWith('image/') 
@@ -116,8 +117,17 @@ form.addEventListener('submit', (event) => {
     .then((response) => response.text())
     
     .then(data => {
-        alert('data loaded');
-        console.log(data);
+        if (data.message) {
+            return showFlash('Esse RG já está cadastrado no sistema!');
+        } 
+        let user = data;
+        let user_keys = Object.keys(user);
+        let user_values = Object.values(user);
+        for (let i = 0; i < user_keys.length; i++) {
+            console.log(user_keys[i], user_values[i])
+            sessionStorage.setItem(user_keys[i], user_values[i])
+        }
+        window.location.replace("/home_logado.html");
     });
     
 
