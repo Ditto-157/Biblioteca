@@ -9,7 +9,6 @@ const buttons = document.getElementById('div-buttons');
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/user'
 const flash = document.getElementById('flash-message');
 
-
 const fieldLabels = {
     nome: 'Nome',
     RG: 'RG',
@@ -63,12 +62,22 @@ for (let i = 0; i < keys.length; i ++) {
     //divDados.innerHTML = divDados.innerHTML + '<label for="valor_' + key + '">' + key + ': </label> <br> <br>';
 }
 formDados.innerHTML += '<br>';
-let saveButton = document.createElement('input');
-saveButton.setAttribute('type', 'submit');
-saveButton.setAttribute('value', 'Salvar');
-formDados.appendChild(saveButton);
-console.log(divDados.innerHTML)
 
+formDados.innerHTML += `
+<div class='d-flex justify-content-around'>
+    <input type='submit' value='Salvar' class="btn btn-primary btn-success">
+    <br>
+    <button class="btn btn-primary btn-danger" onclick='closeEditMode()'>Cancelar</button>
+</div>
+`
+
+formDados.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    if (event.submitter.innerHTML.match('Cancelar')) {
+        return closeEditMode();
+    }
+})
 
 function showFlash(text) {
     flash.textContent = text;
