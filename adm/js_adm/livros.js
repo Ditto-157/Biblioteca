@@ -1,8 +1,9 @@
 const pesquisarLivros = document.getElementById('pesquisa');
 const livrosRows = document.getElementById('table-livros');
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/';
-const data = { key: 'f1563cb61eaf857ce3042c12cd94e774' };
+const baseData = { key: 'f1563cb61eaf857ce3042c12cd94e774' };
 const tableBody = document.getElementById("table-livros");
+const modalExcluir = document.getElementById("modalExcluir");
 const itemsPerPage = 24;
 const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
@@ -62,6 +63,7 @@ function sendNewBookData() {
 
     .then(data => {
         console.log(data)
+        window.location.reload();
     });
 }
 
@@ -121,6 +123,28 @@ function changeTablePage(page) {
     }
 }
 
+function deleteBook() {
+    console.log({
+        key: baseData.key,
+        book_id: modalExcluir.book_id
+    })
+    fetch(url + "book/delete", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            key: baseData.key,
+            book_id: modalExcluir.book_id.toString()
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        window.location.reload();
+    });
+}
+
 function setupPagination(livros) {
     var totalItems = livros.length;
     var totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -155,10 +179,16 @@ function preencherDrop(dropdownId, dados) {
     todosItem.classList.add('dropdown-item');
     todosItem.dataset.value = '';
     todosItem.textContent = `Todos os ${dropdownId === 'autorDrop' ? 'autores' : 'assuntos'}`;
-    todosItem.addEventListener('click', () => { changeTablePage(1); })
+    todosItem.addEventListener('click', () => { changeTablePage(1); });
     menu.appendChild(todosItem);
 
+    let looked = [];
+
     dados.forEach(dado => {
+        if (looked.includes(dado)) {
+            return;
+        }
+        looked.push(dado);
         const item = document.createElement('li');
         item.classList.add('dropdown-item');
         item.dataset.value = dado;
@@ -188,30 +218,39 @@ function preencherDrop(dropdownId, dados) {
     });
 
 }
+
 fetch(url + "books", {
     method: "POST",
     headers: {
         'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(baseData)
 })
 
     .then((response) => response.json())
 
     .then(data => {
+        const ids = Object.keys(data);
         const livros = Object.values(data);
+        console.log(livros);
         for (let i = 0; i < livros.length; i++) {
             var row = tableBody.insertRow();
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
+            var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
+            var cell7 = row.insertCell(6);
             cell1.innerHTML = livros[i].titulo;
             cell2.innerHTML = livros[i].autor;
-            cell3.innerHTML = livros[i].copies.length;
-            cell4.innerHTML = `
-        <button class='btn btn-danger'> Excluir registro </button>
-        `;
+            cell3.innerHTML = livros[i].assuntos;
+            cell4.innerHTML = livros[i].estante;
+            cell5.innerHTML = livros[i].prateleira;
+            cell6.innerHTML = livros[i].copies.length;
+            cell7.innerHTML = `
+            <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + ids[i] + `;"> Excluir registro </button>
+            `;
         }
         changeTablePage(1);
         setupPagination(livros);
