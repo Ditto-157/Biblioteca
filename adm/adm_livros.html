@@ -40,7 +40,7 @@
 
             <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes"
                 aria-label="Pesquisar">
-            <button id="btn-pesquisar" class="btn btn-outline-success">Pesquisar</button>
+            <button id="btn-pesquisar" class="btn btn-outline-success" onclick="searchByTitle()">Pesquisar</button>
 
         </div>
 
@@ -69,17 +69,17 @@
         </div>
 
         </div>
-        <div class="input-group p-1 align-items-center d-flex" style="margin-left: 12.5%">
+        <div class="input-group p-1 align-items-center d-flex" style="margin-left: 12.5%;">
             <div class="dropdown  me-2" id="assuntoDrop">
                 <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Assunto
                 </button>
-                <ul class="dropdown-menu" style="max-height: 20em; overflow-y: auto;"">
+                <ul class="dropdown-menu" style="max-height: 20em; overflow-y: auto;">
                     <li class="dropdown-item" data-value="">Assuntos</li>
                 </ul>
             </div>
-            <div class="dropdown" id="autorDrop">
+            <div class="dropdown" id="autorDrop" style="margin-left: 1%;">
                 <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     Autor
@@ -88,9 +88,27 @@
                     <li class="dropdown-item" data-value="">Autores</li>
                 </ul>
             </div>
-            <div style="margin-left: 40%;"><button class="btn btn-success" data-bs-toggle="modal"
-                    data-bs-target="#modalId" onclick="newBook()">Adicionar</button></div>
-        </div>
+            <div class="dropdown" id="estanteDrop" style="margin-left: 1%;">
+                <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Estante
+                </button>
+                <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
+                    <li class="dropdown-item" data-value="">Estantes</li>
+                </ul>
+            </div>
+            <div class="dropdown" id="prateleiraDrop" style="margin-left: 1%;">
+                <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Prateleira
+                </button>
+                <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
+                    <li class="dropdown-item" data-value="">Prateleiras</li>
+                </ul>
+            </div>
+            <div style="margin-left: 15%"><button class="btn btn-success" data-bs-toggle="modal"
+                    data-bs-target="#modalId" onclick="modalTitle.innerHTML = 'Novo livro'; newBook()">Adicionar</button></div>
+            </div>
 
         <div>
             <div class="table-responsive overflow-auto h-50 w-75 " style="margin-left: 12.5%">
@@ -151,7 +169,7 @@
 
 
                 <nav>
-                    <ul class="pagination" id="pagination">
+                    <ul class="pagination" style="max-height: 80%; overflow-x: auto;" id="pagination">
 
                     </ul>
                 </nav>

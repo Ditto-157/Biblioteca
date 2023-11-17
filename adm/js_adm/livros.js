@@ -4,10 +4,12 @@ const url = 'https://apibiblioteca.2.ie-1.fl0.io/';
 const baseData = { key: 'f1563cb61eaf857ce3042c12cd94e774' };
 const tableBody = document.getElementById("table-livros");
 const modalExcluir = document.getElementById("modalExcluir");
-const itemsPerPage = 24;
+const modalTitle = document.getElementById("modalTitleId");
 const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
+var pages = [];
+var current_page = null;
 
 const fieldLabels = {
     "titulo": "Título",
@@ -36,9 +38,10 @@ for (let i = 0; i < keys.length; i++) {
     input.setAttribute('name', keys[i])
     if (keys[i] === 'n') {
         input.setAttribute('type', 'number');
+        input.setAttribute('min', '1');
     }
     input.classList.add('form-control');
-    input.id = 'input_' + values[i];
+    input.id = 'input_' + keys[i];
     formDados.appendChild(input);
 }
 
@@ -62,8 +65,28 @@ function sendNewBookData() {
     .then((response) => response.text())
 
     .then(data => {
-        console.log(data)
         window.location.reload();
+    });
+}
+
+function queryBook(query) {
+    removeAllRows();
+    query['key'] = baseData.key;
+    fetch(url + "books/search", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(query)
+    })
+    .then((response) => response.json())
+    .then(data => {
+        
+        let ids = Object.keys(data);
+        let livros = Object.values(data);
+        for (let i = 0; i < livros.length; i++) {
+            insertRow(ids[i], livros[i]);
+        }
     });
 }
 
@@ -85,49 +108,102 @@ function hideFlash() {
     flash.classList.add('d-none');
 }
 
-function search() {
+function removeAllRows() {
+    for (let i = 0; i < tableBody.children.length; i ++) {
+        let item = tableBody.children.item(i);
+        item.style.display = 'none';
+    };
+}
+
+function insertRow(id, livro) {
+    var row = tableBody.insertRow();
+    row.setAttribute('data-bs-toggle', 'modal');
+    row.setAttribute('data-bs-target', '#modalId');
+    row.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalTitle.innerHTML = 'Editar livro';
+
+        for (let i = 0; i < formDados.children.length; i ++) {
+            item = formDados.children.item(i);
+            for (let key of Object.keys(livro)) {
+                console.log(item.name ? item.name : '', key);
+                if (!item.name){
+                    break;
+                }
+                if (item.name.match(key)) {
+                    item.value = livro[key];
+                    break;
+                }
+            }
+        }
+    });
+    modalTitle.innerHTML = 'Editar livro';
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    var cell6 = row.insertCell(5);
+    var cell7 = row.insertCell(6);
+    cell1.innerHTML = livro.titulo;
+    cell2.innerHTML = livro.autor;
+    cell3.innerHTML = livro.assuntos;
+    cell4.innerHTML = livro.estante;
+    cell5.innerHTML = livro.prateleira;
+    cell6.innerHTML = livro.copies.length;
+    cell7.innerHTML = `
+    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + id + `;"> Excluir registro </button>
+    `;
+}
+
+function searchByTitle() {
     const termoPesquisa = pesquisarLivros.value.trim().toLowerCase();
 
     if (termoPesquisa === '') {
         return changeTablePage(1);
     }
 
-    for (let i = 0; i < livrosRows.children.length; i++) {
-        row = livrosRows.getElementsByTagName('tr').item(i);
-        const titulo = row.children.item(0).textContent.toLowerCase();
-
-        const correspondeTermo = titulo.includes(termoPesquisa);
-
-        if (correspondeTermo) {
-            row.style.display = 'table-row';
-        } else {
-            row.style.display = 'none';
-        }
-    };
+    queryBook({
+        titulo: termoPesquisa
+    });
 }
 
-pesquisarLivros.addEventListener('input', search);
-document.getElementById('btn-pesquisar').addEventListener('click', search);
-
 function changeTablePage(page) {
-    var startIndex = (page - 1) * itemsPerPage;
-    var endIndex = startIndex + itemsPerPage;
-
-    for (let i = 0; i < tableBody.children.length; i++) {
-        row = tableBody.children.item(i);
-        if (i >= startIndex && i < endIndex) {
-            row.style.display = 'table-row';
-        } else {
-            row.style.display = 'none';
+    removeAllRows();
+    var page = page;
+    if (pages.includes(page)) {
+        let start = ((page - 1) * 24);
+        for (let i = 0; i < tableBody.children.length; i ++) {
+            let item = tableBody.children.item(i);
+            if (i < start + 24 && i >= start ) {
+                item.style.display = 'table-row';
+            }
         }
+    } else {
+        fetch(url + "books/page", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                key: baseData.key,
+                page: page
+            })
+        })
+        .then((response) => response.json())
+        .then(data => {
+            let ids = Object.keys(data);
+            let livros = Object.values(data);
+            console.log(livros);
+            for (let i = 0; i < livros.length; i++) {
+                insertRow(ids[i], livros[i]);
+            }
+            pages.push(page);
+        });
     }
 }
 
 function deleteBook() {
-    console.log({
-        key: baseData.key,
-        book_id: modalExcluir.book_id
-    })
     fetch(url + "book/delete", {
         method: "POST",
         headers: {
@@ -145,120 +221,115 @@ function deleteBook() {
     });
 }
 
-function setupPagination(livros) {
-    var totalItems = livros.length;
-    var totalPages = Math.ceil(totalItems / itemsPerPage);
-    var pagination = document.getElementById("pagination");
-    pagination.innerHTML = "";
-
-    for (var i = 1; i <= totalPages; i++) {
-        var li = document.createElement("li");
-        var a = document.createElement("a");
-        li.classList.add("page-item");
-        a.classList.add("page-link");
-        a.href = "#";
-        a.innerHTML = i;
-
-        a.onclick = (function (page) {
-            return function () {
-                changeTablePage(page, livros);
-            };
-        })(i);
-        li.appendChild(a);
-        pagination.appendChild(li);
-    }
-}
-
-function preencherDrop(dropdownId, dados) {
-    const dropdown = document.getElementById(dropdownId);
-
-    var menu = dropdown.querySelector('.dropdown-menu');
-    menu.innerHTML = '';
-
-    const todosItem = document.createElement('li');
-    todosItem.classList.add('dropdown-item');
-    todosItem.dataset.value = '';
-    todosItem.textContent = `Todos os ${dropdownId === 'autorDrop' ? 'autores' : 'assuntos'}`;
-    todosItem.addEventListener('click', () => { changeTablePage(1); });
-    menu.appendChild(todosItem);
-
-    let looked = [];
-
-    dados.forEach(dado => {
-        if (looked.includes(dado)) {
-            return;
-        }
-        looked.push(dado);
-        const item = document.createElement('li');
-        item.classList.add('dropdown-item');
-        item.dataset.value = dado;
-        item.textContent = dado;
-        item.addEventListener('click', () => {
-            for (let i = 0; i < livrosRows.children.length; i++) {
-                row = livrosRows.getElementsByTagName('tr').item(i);
-                let autor = row.children.item(1).textContent;
-                let assuntos = row.children.item(2).textContent;
-
-                let correspondeTermo = false;
-                if (dropdownId === 'autorDrop') {
-                    correspondeTermo = autor === dado;
-                } else {
-                    correspondeTermo = assuntos === dado;
-                }
-
-                if (correspondeTermo) {
-                    row.style.display = 'table-row';
-                } else {
-                    row.style.display = 'none';
-                }
-            };
-        })
-
-        dropdown.querySelector('.dropdown-menu').appendChild(item);
-    });
-
-}
-
-fetch(url + "books", {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(baseData)
-})
-
-    .then((response) => response.json())
-
+function setupPagination() {
+    fetch(url + "books/length", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(baseData)
+    })
+    .then(response => response.json())
     .then(data => {
-        const ids = Object.keys(data);
-        const livros = Object.values(data);
-        console.log(livros);
-        for (let i = 0; i < livros.length; i++) {
-            var row = tableBody.insertRow();
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-            var cell7 = row.insertCell(6);
-            cell1.innerHTML = livros[i].titulo;
-            cell2.innerHTML = livros[i].autor;
-            cell3.innerHTML = livros[i].assuntos;
-            cell4.innerHTML = livros[i].estante;
-            cell5.innerHTML = livros[i].prateleira;
-            cell6.innerHTML = livros[i].copies.length;
-            cell7.innerHTML = `
-            <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + ids[i] + `;"> Excluir registro </button>
-            `;
-        }
-        changeTablePage(1);
-        setupPagination(livros);
+        totalItems = data.len;
+        var totalPages = Math.ceil(totalItems / 24);
+        var pagination = document.getElementById("pagination");
+        pagination.innerHTML = "";
 
-        let autores = livros.map((livro) => livro.autor);
-        let assuntos = livros.map((livro) => livro.assuntos);
-        preencherDrop('autorDrop', autores);
-        preencherDrop('assuntoDrop', assuntos);
-        tableBody.dispatchEvent(new FocusEvent('focus'));
+        for (var i = 1; i <= totalPages; i++) {
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            li.classList.add("page-item");
+            a.classList.add("page-link");
+            a.innerHTML = i;
+
+            a.onclick = (function (page) {
+                return function () {
+                    changeTablePage(page);
+                };
+            })(i);
+            li.appendChild(a);
+            pagination.appendChild(li);
+        }
     });
+}
+
+function preencherDrop(drop_id) {
+    var dropField = null;
+    let all_text = null;
+    switch (drop_id) {
+        case 'autorDrop':
+            dropField = 'autor';
+            all_text = 'os autores';
+            break;
+        case 'assuntoDrop':
+            dropField = 'assuntos';
+            all_text = 'os assuntos';
+            break;
+        case 'estanteDrop':
+            dropField = 'estante';
+            all_text = 'as estantes';
+            break;
+        case 'prateleiraDrop':
+            dropField = 'prateleira';
+            all_text = 'as prateleiras';
+            break;
+        default: 
+            break;
+    }
+
+    fetch(url + "books/field_values", {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            key: baseData.key,
+            field: dropField
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        const dropdown = document.getElementById(drop_id);
+
+        var menu = dropdown.querySelector('.dropdown-menu');
+        menu.innerHTML = '';
+
+        const todosItem = document.createElement('li');
+        todosItem.classList.add('dropdown-item');
+        todosItem.dataset.value = '';
+        todosItem.textContent = 'Todos ' + all_text;
+        todosItem.addEventListener('click', () => {changeTablePage(1);});
+        menu.appendChild(todosItem);
+
+        let looked = [];
+
+        data.values.forEach(value => {
+            if (looked.includes(value)) {
+                return;
+            }
+            looked.push(value);
+            const item = document.createElement('li');
+            item.classList.add('dropdown-item');
+            item.dataset.value = value;
+            item.textContent = value;
+            let query = {}
+            query[dropField] = value;
+            item.addEventListener('click', () => {
+                queryBook(query);
+            })
+
+            dropdown.querySelector('.dropdown-menu').appendChild(item);
+        });
+    });
+}
+
+
+changeTablePage(1);
+setupPagination();
+preencherDrop('autorDrop');
+preencherDrop('assuntoDrop');
+preencherDrop('estanteDrop');
+preencherDrop('prateleiraDrop');
+//tableBody.dispatchEvent(new FocusEvent('focus'));
 
