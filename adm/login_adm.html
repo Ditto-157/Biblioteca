@@ -2,57 +2,59 @@
 <html lang="en">
 
 <head>
-<title>Title</title>
-<!-- Required meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="stylesheet" href="../adm/css_adm/livros.css">
-<!-- Bootstrap CSS v5.2.1 -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../adm/css_adm/livros.css">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 </head>
 
 <body>
-<header class="d-flex text-white">
-    <h1 class="display-1 ms-5">Biblioteca</h1>
-</header>
-<nav>
-    <div class="nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
-    <a class="btn text-white buttons" href="login_adm.html">Admin</a>
-    <a class="btn text-white buttons" href="#">Sobre</a>
-    </div>
-    </div>
-</nav>
-<main>
-<div class="container w-75">
-    <div class="mb-3">
-        <h3>Admin</h3>
-        <label for="" class="form-label">Login</label>
-        <input type="text" class="form-control" name="" id="" >
-        <label for="" class="form-label">Senha</label>
-        <input type="text" class="form-control" name="" id="" >
-    </div>
-    <button type="button" class="btn btn-primary btn-success">Login</button>
-    <br>
+    <header class="d-flex text-white">
+        <h1 class="display-1 ms-5">Biblioteca</h1>
+    </header>
+    <nav>
+        <div class="nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
+            <a class="btn text-white buttons" href="login_adm.html">Admin</a>
+            <a class="btn text-white buttons" href="#">Sobre</a>
+        </div>
+        </div>
+    </nav>
+    <main>
+        <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none" >RG não encontrado</div>
+        <div class="container w-75">
+            <div class="mb-3">
+                <h3>Admin</h3>
+                <p> Essa área é restrita aos adminstradores da biblioteca. Caso esteja perdido, <a href="">volte para a página inicial.</a></p>
+                <label for="" class="form-label">Login</label>
+                <input id="login" type="text" class="form-control" placeholder="Login admin">
+                <label for="" class="form-label">Senha</label>
+                <input id="password" type="password" class="form-control" placeholder="Senha admin">
+            </div>
+            <button type="button" class="btn btn-primary btn-success" onclick="checkLogin()">Login</button>
+            <br>
 
-</div>
-</main>
-<footer class="text-white d-flex flex-column justify-content-center align-items-center">
-    <!-- place footer here -->
+        </div>
+    </main>
+    <footer style="position: fixed; bottom: 0" class="text-white d-flex flex-column justify-content-center align-items-center">
+        <!-- place footer here -->
+        <p>@biblioteca_milagres</p>
+        <p>@bibliotecasocorrolima.gmail.com</p>
+    </footer>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
 
-    <p>@biblioteca_milagres</p>
-    <p>@bibliotecasocorrolima.gmail.com</p>
-</footer>
-<!-- Bootstrap JavaScript Libraries -->
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
-    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+    </script>
+    <script src="js_adm/login.js"></script>
 </body>
 
 </html>

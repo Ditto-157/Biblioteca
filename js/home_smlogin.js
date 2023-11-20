@@ -1,3 +1,4 @@
+document.cookie = "nomeDoCookie=valor; secure; HttpOnly";
 const pesquisarLivros = document.getElementById('pesquisa');
 const livrosRows = document.getElementById('table-livros');
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/books';
