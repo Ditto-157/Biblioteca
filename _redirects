@@ -1,1 +1,1 @@
-/adm/* /admin/:splat 301
+/admin/login /adm/adm_login.html 301
