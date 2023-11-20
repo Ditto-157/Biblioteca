@@ -29,6 +29,8 @@ fetch(url + "lendings", {
             .then((response) => response.json())
             .then(data => {
                 let row = tableBody.insertRow();
+                row.setAttribute('data-bs-toggle', 'modal');
+                row.setAttribute('data-bs-target', '#modalEmprestimo');
                 let cell1 = row.insertCell(0);
                 let cell2 = row.insertCell(1);
                 let cell3 = row.insertCell(2);

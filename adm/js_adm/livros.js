@@ -20,7 +20,7 @@ const fieldLabels = {
     "edicao": "Edição",
     "CDD": "CDD",
     "assuntos": "Assuntos",
-    "n": "Número de exemplares"
+    "n": "Quantidade"
 }
 
 const keys = Object.keys(fieldLabels);
@@ -81,9 +81,14 @@ function queryBook(query) {
     })
     .then((response) => response.json())
     .then(data => {
-        
+        let keys = Object.keys(query);
         let ids = Object.keys(data);
-        let livros = Object.values(data);
+        let livros = Object.values(data).sort((book) => {
+            
+            let search = query[keys[0]].toLowerCase();
+            let bookValue = book[keys[0]].toLowerCase();
+            return bookValue === search ? 1 : -1;
+        }).reverse();
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
@@ -122,16 +127,20 @@ function insertRow(id, livro) {
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
-
+        formDados.book_id = id;
         for (let i = 0; i < formDados.children.length; i ++) {
             item = formDados.children.item(i);
-            for (let key of Object.keys(livro)) {
-                console.log(item.name ? item.name : '', key);
+            for (let key of Object.keys(fieldLabels)) {
                 if (!item.name){
                     break;
                 }
-                if (item.name.match(key)) {
-                    item.value = livro[key];
+                console.log(item.name, key)
+                if (item.name === key) {
+                    if (key === 'n') {
+                        item.value = livro.copies.length;
+                    } else {
+                        item.value = livro[key];
+                    }
                     break;
                 }
             }
@@ -145,13 +154,15 @@ function insertRow(id, livro) {
     var cell5 = row.insertCell(4);
     var cell6 = row.insertCell(5);
     var cell7 = row.insertCell(6);
+    var cell8 = row.insertCell(7);
     cell1.innerHTML = livro.titulo;
     cell2.innerHTML = livro.autor;
     cell3.innerHTML = livro.assuntos;
-    cell4.innerHTML = livro.estante;
-    cell5.innerHTML = livro.prateleira;
-    cell6.innerHTML = livro.copies.length;
-    cell7.innerHTML = `
+    cell4.innerHTML = livro.CDD;
+    cell5.innerHTML = livro.estante;
+    cell6.innerHTML = livro.prateleira;
+    cell7.innerHTML = livro.copies.length;
+    cell8.innerHTML = `
     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + id + `;"> Excluir registro </button>
     `;
 }
@@ -203,7 +214,7 @@ function changeTablePage(page) {
     }
 }
 
-function deleteBook() {
+function deleteBook(form=false) {
     fetch(url + "book/delete", {
         method: "POST",
         headers: {
@@ -211,7 +222,7 @@ function deleteBook() {
         },
         body: JSON.stringify({
             key: baseData.key,
-            book_id: modalExcluir.book_id.toString()
+            book_id: form ? formDados.book_id.toString() : modalExcluir.book_id.toString()
         })
     })
     .then(response => response.json())

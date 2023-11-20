@@ -4,7 +4,7 @@ body{
 
 header{
     background-color: #003366;
-   
+
 
 }
 
@@ -25,3 +25,23 @@ footer{
     background-color: rgb(7, 175, 7);
     transition: 0.3s;
 }
+
+.custom-col {
+    
+    
+}
+
+@media (max-width: 1200px) {
+    .custom-col {
+        flex-basis: 48%;
+        }
+    
+}
+
+@media (max-width: 768px)
+{
+    .custom-col {
+        flex-basis: 100%;
+    }
+}
+
