@@ -36,19 +36,48 @@
   <main>
     <div class="input-group mb-3 my-3 w-75 container">
 
-        <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes" aria-label="Pesquisar">
-        <button id="btn-pesquisar" class="btn btn-outline-success">Pesquisar</button>
+        <input id="pesquisa" class="form-control me-2" type="search" placeholder="Pesquisar usuários" aria-label="Pesquisar">
+        <button id="btn-pesquisar" class="btn btn-outline-success" onclick="searchByName()">Pesquisar</button>
         
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="modalUser" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitleId">Dados do usuário</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+          <div class="modal-body" id="modal-body">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      var modalId = document.getElementById('modalUser');
+    
+      modalId.addEventListener('show.bs.modal', function (event) {
+          // Button that triggered the modal
+          let button = event.relatedTarget;
+          // Extract info from data-bs-* attributes
+          let recipient = button.getAttribute('data-bs-whatever');
+    
+        // Use above variables to manipulate the DOM
+      });
+    </script>
+    
 
     <div>
         <div class="table-responsive overflow-auto h-50 w-75 " style="margin-left: 12.5%">
             <table id="table" class="table h-50 table-hover">
                 <thead>
                     <tr>
-                        <th scope="col">Nome do Usuario</th>
+                        <th scope="col">Nome do Usuário</th>
                         <th scope="col">RG</th>
+                        <th scope="col">Livro atual</th>
+                        <th scope="col">Data de cadastro</th>
                         
                     </tr>
                 </thead>
@@ -79,7 +108,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
   
-  
+  <script src="js_adm/leitores.js"></script>
 </body>
 
 </html>
