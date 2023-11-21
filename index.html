@@ -6,8 +6,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/home_smlogin.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home_smlogin.css">
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -23,8 +23,8 @@
   </header>
   <nav>
     <div class="nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
-      <a class="btn text-white buttons" href="home_smlogin.html">Home</a>
-      <a class="btn text-white buttons" href="login.html">Login</a>
+      <a class="btn text-white buttons" href="paginas/home_smlogin.html">Home</a>
+      <a class="btn text-white buttons" href="paginas/login.html">Login</a>
       <a class="btn text-white buttons" href="#">Sobre</a>
     </div>
     </div>
@@ -33,7 +33,7 @@
     <div class="input-group mb-3 my-3 w-75 container">
 
       <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes" aria-label="Pesquisar">
-      <button id="btn-pesquisar" class="btn btn-outline-success">Pesquisar</button>
+      <button onclick="searchByTitle()" class="btn btn-outline-success">Pesquisar</button>
 
     </div>
     <div class="input-group p-1 align-items-center d-flex" style="margin-left: 12.5%">
@@ -92,7 +92,7 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
   
-  <script src="../js/home_smlogin.js"></script>
+  <script src="js/home_smlogin.js"></script>
 
 </body>
 
