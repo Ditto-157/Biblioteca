@@ -1,3 +1,5 @@
+console.log(process.env);
+
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/user'
 const flash = document.getElementById('flash-message');
 const input_RG = document.getElementById('input-RG');
