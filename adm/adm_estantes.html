@@ -17,31 +17,34 @@
     <link href="../bootstrap/bootstrap-5.3.2-dist/css/bootstrap.min.css">
 
     <style>
-        
-          
+
+
 
 
     </style>
 
 </head>
 
-<body >
+<body>
     <header class="d-flex text-white">
-        <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2" style="width: 7%; margin-left: 12.5%; border-radius: 50%; heigth: 10%;" >
-        <h1 class="display-1 ms-2" >Biblioteca</h1>
+        <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2"
+            style="width: 7%; margin-left: 12.5%; border-radius: 50%; height: 10%;">
+        <h1 class="display-1 ms-2">Biblioteca</h1>
     </header>
-    <nav class="menu">
-        <div class="barra_menu">
-            <a class="buttons" href="adm_emprestimos.html">Emprestimos</a>
-            <a class="buttons" href="adm_cadastros.html">Cadastros</a>
-            <a class="buttons" href="adm_leitores.html">Leitores</a>
-            <a class="buttons" href="adm_livros.html">Livros</a>
-            <a class="buttons" href="adm_estantes.html">Estantes</a>
-            <a class="buttons" href="#">Sobre</a>
+    <nav>
+        <div class="nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
+            <a class="btn text-white  buttons" href="adm_emprestimos.html">Emprestimos</a>
+            <a class="btn text-white  buttons" href="adm_cadastros.html">Cadastros</a>
+            <a class="btn text-white  buttons" href="adm_leitores.html">Leitores</a>
+            <a class="btn text-white  buttons" href="adm_livros.html">Livros</a>
+            <a class="btn text-white  buttons" href="adm_estantes.html">Estantes</a>
+            <a class="btn text-white buttons" href="#">Sobre</a>
+        </div>
         </div>
     </nav>
     <main>
-        <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none" ></div>
+        <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none">
+        </div>
         <div class="input-group mb-3 my-3 w-75 container">
 
             <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes"
@@ -63,11 +66,11 @@
                             <button type="button" class="btn btn-primary">Cancelar</button>
                             <button type="button" class="btn btn-success">Criar Estante</button>
                         </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
         </div>
 
         </div>
@@ -157,21 +160,21 @@
             </div>
 
         </div>
-       
-        
+
+
         <script>
             var modalId = document.getElementById('modalId');
-        
+
             modalId.addEventListener('show.bs.modal', function (event) {
-                  // Button that triggered the modal
-                  let button = event.relatedTarget;
-                  // Extract info from data-bs-* attributes
-                  let recipient = button.getAttribute('data-bs-whatever');
-        
+                // Button that triggered the modal
+                let button = event.relatedTarget;
+                // Extract info from data-bs-* attributes
+                let recipient = button.getAttribute('data-bs-whatever');
+
                 // Use above variables to manipulate the DOM
             });
         </script>
-        
+
     </main>
     <footer class="footer mt-auto py-1 text-white d-flex flex-column justify-content-center align-items-center">
         <!-- place footer here -->

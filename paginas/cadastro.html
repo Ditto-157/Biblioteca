@@ -7,17 +7,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <<link rel="stylesheet" href="../css/base.css">
-  <!-- Bootstrap CSS v5.2.1 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 </head>
 
 <body>
   <header class="d-flex text-white">
-    <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2" style="width: 7%; margin-left: 12.5%; border-radius: 50%; heigth: 10%;" >
-    <h1 class="display-1 ms-2" >Biblioteca</h1>
-</header>
+    <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2"
+      style="width: 7%; margin-left: 12.5%; border-radius: 50%; height: 10%;">
+    <h1 class="display-1 ms-2">Biblioteca</h1>
+  </header>
   <nav>
     <div class=" nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
       <a class="btn text-white  buttons" href="home_smlogin.html">Home</a>
@@ -27,28 +28,32 @@
     </div>
   </nav>
   <main>
-    <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none" >RG não encontrado</div>
+    <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none">RG não
+      encontrado</div>
     <div class="container mt-5">
       <div class="row">
         <div class="col-12">
           <form id="cadastro-form" enctype="multipart/form-data" method="POST">
             <input type="hidden" name="key" id="api-key">
-            <div id="cadastro1" class="mb-3" >
+            <div id="cadastro1" class="mb-3">
               <h1>Cadastro 1/3</h1>
 
               <label for="nome" class="form-label">Nome Completo</label>
               <input id="nome" type="text" name="nome" class="form-control" placeholder="Nome Completo" required>
               <label for="RG" class="form-label">RG</label>
-              <input id="RG"type="text" name="RG" class="form-control" placeholder="1234567890-0" required>
+              <input id="RG" type="text" name="RG" class="form-control" placeholder="1234567890-0" required>
               <label for="data" class="form-label">Data de nascimento</label>
-              <input id="data" type="date" name="data_nascimento" class="form-control" placeholder="Data de Nascimento" required>
+              <input id="data" type="date" name="data_nascimento" class="form-control" placeholder="Data de Nascimento"
+                required>
               <label for="local" class="form-label">Local de nascimento</label>
-              <input id="local" type="text" name="local_nascimento" class="form-control" placeholder="Local de nascimento" required>
+              <input id="local" type="text" name="local_nascimento" class="form-control"
+                placeholder="Local de nascimento" required>
               <label for="cep" class="form-label">CEP</label>
-              <input id="cep" type="text" name="CEP" class="form-control" placeholder="12345-678" required> 
+              <input id="cep" type="text" name="CEP" class="form-control" placeholder="12345-678" required>
               <label for="residencia" class="form-label">Residência</label>
-              <input id="residencia" type="text" name="residencia" class="form-control" placeholder="Residência" required>
-              
+              <input id="residencia" type="text" name="residencia" class="form-control" placeholder="Residência"
+                required>
+
               <div class="d-flex justify-content-center m-3">
                 <button class="btn-primary btn" onclick="changeToNextPage(1, 2)">Proxima</button>
               </div>
@@ -56,40 +61,45 @@
             <div id="cadastro2" style="display: none;" class="mb-3">
               <h1>Cadastro 2/3</h1>
 
-              <label for="tel" class="form-label">Telefone pessoal</label> 
+              <label for="tel" class="form-label">Telefone pessoal</label>
               <input id="tel" type="tel" name="tel_pessoal" class="form-control" placeholder="Telefone" required>
               <label for="email" class="form-label">Email</label>
-              <input id="email" type="email" name="email" class="form-control" placeholder="Email" required> 
+              <input id="email" type="email" name="email" class="form-control" placeholder="Email" required>
               <label for="profissao" class="form-label">Profissão</label>
               <input id="profissao" type="text" name="profissao" class="form-control" placeholder="Profissão">
               <label for="tel_prof" class="form-label">Telefone profissional</label>
-              <input id="tel_prof" type="tel" name="tel_profissional" class="form-control" placeholder="Telefone Profissional">
+              <input id="tel_prof" type="tel" name="tel_profissional" class="form-control"
+                placeholder="Telefone Profissional">
               <label for="escola" class="form-label">Escola/Universidade</label>
               <input id="escola" type="text" name="escola" class="form-control" placeholder="Escola/Universidade">
               <label for="curso" class="form-label">Curso/Série</label>
               <input id="curso" type="text" name="curso_serie" class="form-control" placeholder="Curso/Série">
-              
+
               <div class="d-flex justify-content-center m-3">
-                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changeToBackPage(1)">Anterior</button>
+                <button class="btn-primary btn" style="margin-right: 2%;"
+                  onclick="changeToBackPage(1)">Anterior</button>
                 <button class="btn-primary btn" onclick="changeToNextPage(2, 3)">Proxima</button>
               </div>
             </div>
             <div id="cadastro3" style="display: none;" class="mb-3">
               <h1>Cadastro 3/3</h1>
-              
+
               <label for="frente" class="form-label">Tire uma foto da frente do seu RG</label>
               <input id="frente" type="file" class="form-control" name="RG_frente" placeholder="Frente do RG" required>
               <label for="verso" class="form-label">Tire uma foto do verso do seu RG</label>
               <input id="verso" type="file" class="form-control" name="RG_verso" placeholder="Verso do RG" required>
-              <label for="comprovante" class="form-label">Tire uma foto de um comprovante de residência (de até 3 meses)</label>
-              <input id="comprovante" type="file" class="form-control" name="comprovante" placeholder="Comprovante" required>
-              
+              <label for="comprovante" class="form-label">Tire uma foto de um comprovante de residência (de até 3
+                meses)</label>
+              <input id="comprovante" type="file" class="form-control" name="comprovante" placeholder="Comprovante"
+                required>
+
               <div class="d-flex justify-content-center m-3">
-                <button class="btn-primary btn" style="margin-right: 2%;" onclick="changeToBackPage(2)">Anterior</button>
+                <button class="btn-primary btn" style="margin-right: 2%;"
+                  onclick="changeToBackPage(2)">Anterior</button>
                 <input type="submit" value="Finalizar cadastro" class="btn-primary btn">
               </div>
             </div>
-          </div>
+        </div>
         </form>
       </div>
     </div>

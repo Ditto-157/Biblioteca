@@ -21,21 +21,24 @@
 
 <body>
     <header class="d-flex text-white">
-        <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2" style="width: 7%; margin-left: 12.5%; border-radius: 50%; heigth: 10%;" >
-        <h1 class="display-1 ms-2" >Biblioteca</h1>
+        <img src="../img/logo-biblioteca.jpeg" class="rounded-ci my-2"
+            style="width: 7%; margin-left: 12.5%; border-radius: 50%; height: 10%;">
+        <h1 class="display-1 ms-2">Biblioteca</h1>
     </header>
-    <nav class="menu">
-        <div class="barra_menu">
-            <a class="buttons" href="adm_emprestimos.html">Emprestimos</a>
-            <a class="buttons" href="adm_cadastros.html">Cadastros</a>
-            <a class="buttons" href="adm_leitores.html">Leitores</a>
-            <a class="buttons" href="adm_livros.html">Livros</a>
-            <a class="buttons" href="adm_estantes.html">Estantes</a>
-            <a class="buttons" href="#">Sobre</a>
+    <nav>
+        <div class="nav d-flex w-75 mt-2 align-items-center container h-25 justify-content-evenly">
+            <a class="btn text-white  buttons" href="adm_emprestimos.html">Emprestimos</a>
+            <a class="btn text-white  buttons" href="adm_cadastros.html">Cadastros</a>
+            <a class="btn text-white  buttons" href="adm_leitores.html">Leitores</a>
+            <a class="btn text-white  buttons" href="adm_livros.html">Livros</a>
+            <a class="btn text-white  buttons" href="adm_estantes.html">Estantes</a>
+            <a class="btn text-white buttons" href="#">Sobre</a>
+        </div>
         </div>
     </nav>
     <main>
-        <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none" ></div>
+        <div id="flash-message" class="bg-danger w-75 container d-flex justify-content-center mt-2 text-white d-none">
+        </div>
         <div class="input-group mb-3 my-3 w-75 container">
 
             <input id="pesquisa" class="form-control me-2" type="search" placeholder="Livros Recentes"
@@ -50,7 +53,8 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modalTitleId">Novo Livro</h5>
-                        <button id='closeModalId' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button id='closeModalId' type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container-fluid">
@@ -62,7 +66,8 @@
                         </div>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button type="button" class="btn btn-primary" onclick="deleteBook(true); sendNewBookData(); document.getElementById('closeModalId').click();">Salvar</button>
+                        <button type="button" class="btn btn-primary"
+                            onclick="deleteBook(true); sendNewBookData(); document.getElementById('closeModalId').click();">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -73,46 +78,46 @@
             <div class="d-flex flex-wrap" style="margin-left: 12.5%;">
                 <div class="dropdown p-1 custom-col" id="assuntoDrop">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Assunto
+                        aria-expanded="false">
+                        Assunto
                     </button>
-                        <ul class="dropdown-menu" style="max-height: 20em; overflow-y: auto;">
-                            <li class="dropdown-item" data-value="">Assuntos</li>
-                        </ul>
+                    <ul class="dropdown-menu" style="max-height: 20em; overflow-y: auto;">
+                        <li class="dropdown-item" data-value="">Assuntos</li>
+                    </ul>
                 </div>
-            <div class="dropdown p-1 col-2 custom-col" id="autorDrop">
-                <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Autor
-                </button>
-                <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
-                    <li class="dropdown-item" data-value="">Autores</li>
-                </ul>
+                <div class="dropdown p-1 col-2 custom-col" id="autorDrop">
+                    <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Autor
+                    </button>
+                    <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
+                        <li class="dropdown-item" data-value="">Autores</li>
+                    </ul>
+                </div>
+                <div class="dropdown p-1 custom-col" id="estanteDrop">
+                    <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Estante
+                    </button>
+                    <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
+                        <li class="dropdown-item" data-value="">Estantes</li>
+                    </ul>
+                </div>
+                <div class="dropdown p-1 custom-col" id="prateleiraDrop">
+                    <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Prateleira
+                    </button>
+                    <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
+                        <li class="dropdown-item" data-value="">Prateleiras</li>
+                    </ul>
+                </div>
+                <div class="p-1 col-12"><button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalId"
+                        onclick="modalTitle.innerHTML = 'Novo livro'; newBook()">Adicionar</button></div>
             </div>
-            <div class="dropdown p-1 custom-col" id="estanteDrop">
-                <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Estante
-                </button>
-                <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
-                    <li class="dropdown-item" data-value="">Estantes</li>
-                </ul>
-            </div>
-            <div class="dropdown p-1 custom-col" id="prateleiraDrop">
-                <button class="btn btn-primary dropdown-toggle " type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Prateleira
-                </button>
-                <ul class="dropdown-menu " style="max-height: 20em; overflow-y: auto;">
-                    <li class="dropdown-item" data-value="">Prateleiras</li>
-                </ul>
-            </div>
-            <div class="p-1 col-12" ><button class="btn btn-success" data-bs-toggle="modal"
-                data-bs-target="#modalId" onclick="modalTitle.innerHTML = 'Novo livro'; newBook()">Adicionar</button></div>
-            </div>
-            </div>
-            
-            </div>
+        </div>
+
+        </div>
 
         <div>
             <div class="table-responsive overflow-auto h-50 w-75 " style="margin-left: 12.5%">
@@ -182,42 +187,44 @@
 
         </div>
         <!-- Button trigger modal -->
-        
-        
+
+
         <!-- Modal -->
-        <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="modalTitleId"
+            aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
-                        <div class="modal-header">
-                                <h5 class="modal-title" id="modalTitleId">Excluir</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">Excluir</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <div class="modal-body">
                         <div class="container-fluid">
                             <h3>Certeza que quer excluir o livro?</h3>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary btn-danger" data-bs-dismiss="modal" onclick="deleteBook()">Excluir</button>
+                        <button type="button" class="btn btn-secondary btn-danger" data-bs-dismiss="modal"
+                            onclick="deleteBook()">Excluir</button>
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         <script>
             var modalId = document.getElementById('modalId');
-        
+
             modalId.addEventListener('show.bs.modal', function (event) {
-                  // Button that triggered the modal
-                  let button = event.relatedTarget;
-                  // Extract info from data-bs-* attributes
-                  let recipient = button.getAttribute('data-bs-whatever');
-        
+                // Button that triggered the modal
+                let button = event.relatedTarget;
+                // Extract info from data-bs-* attributes
+                let recipient = button.getAttribute('data-bs-whatever');
+
                 // Use above variables to manipulate the DOM
             });
         </script>
-        
+
     </main>
     <footer class="text-white d-flex flex-column justify-content-center align-items-center">
         <!-- place footer here -->
