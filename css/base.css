@@ -12,24 +12,51 @@ footer{
     background-color: #003366;
     position: relative;
     bottom: 0;
+    height: 15%;
     width: 100%;
+    padding: 10px 0px;
+    z-index: 3000;
 }
 
-.nav{
-    background-color: #6666; 
+.menu{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
+.barra_menu{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-decoration: none;
+    background-color: #666;
+    width: 75%;
+    height: 5vh;
+    color: white!important;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    flex-wrap: wrap;
 
-
-.buttons :hover{
-    background-color: rgb(7, 175, 7);
-    transition: 0.3s;
 }
 
-.custom-col {
+.buttons{
+    padding-left: 2%;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    height: 100%;
+    width: 10%;
+    border-radius: 10%;
+    transition: 0.5s;
+    justify-content: center;
     
-    
 }
+.buttons:hover{
+    color: rgb(16, 186, 44)
+}
+
+
 
 @media (max-width: 1200px) {
     .custom-col {
@@ -40,8 +67,15 @@ footer{
 
 @media (max-width: 768px)
 {
-    .custom-col {
-        flex-basis: 100%;
+    .menu{
+        width: 100vw;
+        display: flex;
+    }
+    .barra_menu{
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        
     }
 }
 
