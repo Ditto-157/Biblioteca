@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded",
                     if (!data.message) {
                         let lastPart = window.location.href.split('/');
                         lastPart = lastPart[lastPart.length - 1];
-                        window.location.replace(window.location.href.replace(lastPart, 'login_adm.html'))
+                        window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
                     } else {
                         container.classList.remove('invisible');
                         loading.style.display = "none";
