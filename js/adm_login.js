@@ -38,8 +38,7 @@ function checkLogin() {
         }
         sessionStorage.clear();
         sessionStorage.setItem('token', data.token);
-        let lastPart = window.location.href.split('/');
-        lastPart = lastPart[lastPart.length - 1];
-        window.location.replace(window.location.href.replace(lastPart, 'admin'))
+        let newUrl = window.location.href.replace('/login', '/');
+        window.location.replace(newUrl);
     });
 }
