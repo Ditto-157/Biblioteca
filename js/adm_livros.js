@@ -95,8 +95,8 @@ function queryBook(query) {
             
             let search = query[keys[0]].toLowerCase();
             let bookValue = book[keys[0]].toLowerCase();
-            return bookValue === search ? 1 : -1;
-        }).reverse();
+            return bookValue === search ? -1 : 1;
+        });
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
