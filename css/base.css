@@ -1,4 +1,6 @@
-
+body {
+    overflow-x: hidden;
+}
 header{
     background-color: #003366;
 }
