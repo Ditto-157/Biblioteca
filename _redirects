@@ -1,2 +1,2 @@
-/admin/login login_adm.html 200
-/admin adm_livros.html 200
+/admin/login /login_adm.html 200
+/admin /adm_livros.html 200
