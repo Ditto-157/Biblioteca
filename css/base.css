@@ -1,61 +1,17 @@
-body{
-    margin: 0;
-}
 
 header{
     background-color: #003366;
-
-
 }
 
 footer{
     background-color: #003366;
     position: relative;
-    bottom: 0;
-    height: 15%;
-    width: 100%;
-    padding: 10px 0px;
-    z-index: 3000;
+    width: 100vw;
 }
 
-.menu{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.barra_menu{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-decoration: none;
+.navs{
     background-color: #666;
-    width: 75%;
-    height: 5vh;
-    color: white!important;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    flex-wrap: wrap;
-
 }
-
-.buttons{
-    padding-left: 2%;
-    align-items: center;
-    text-align: center;
-    color: white;
-    text-decoration: none;
-    height: 100%;
-    width: 10%;
-    border-radius: 10%;
-    transition: 0.5s;
-    justify-content: center;
-    
-}
-.buttons:hover{
-    color: rgb(16, 186, 44)
-}
-
 
 
 @media (max-width: 1200px) {
@@ -65,7 +21,7 @@ footer{
     
 }
 
-@media (max-width: 768px)
+@media only screen and (max-width: 768px)
 {
     .menu{
         width: 100vw;
