@@ -1,2 +1,5 @@
 /admin/login /login_adm.html 200
 /admin /adm_livros.html 200
+/js/index.js / 300
+/js/login.js / 300
+/js/adm_livros.js / 300
