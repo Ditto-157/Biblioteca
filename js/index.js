@@ -219,4 +219,47 @@ setupPagination();
 preencherDrop('autorDrop');
 preencherDrop('assuntoDrop');
 
-console.log(process.env);
+fetch(window.location.href + '/api', {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        key: baseData.key,
+        field: dropField
+    })
+})
+.then(response => response.json())
+.then(data => {
+    const dropdown = document.getElementById(drop_id);
+
+    var menu = dropdown.querySelector('.dropdown-menu');
+    menu.innerHTML = '';
+
+    const todosItem = document.createElement('li');
+    todosItem.classList.add('dropdown-item');
+    todosItem.dataset.value = '';
+    todosItem.textContent = 'Todos ' + all_text;
+    todosItem.addEventListener('click', () => {changeTablePage(1);});
+    menu.appendChild(todosItem);
+
+    let looked = [];
+
+    data.values.forEach(value => {
+        if (looked.includes(value)) {
+            return;
+        }
+        looked.push(value);
+        const item = document.createElement('li');
+        item.classList.add('dropdown-item');
+        item.dataset.value = value;
+        item.textContent = value;
+        let query = {}
+        query[dropField] = value;
+        item.addEventListener('click', () => {
+            queryBook(query);
+        })
+
+        dropdown.querySelector('.dropdown-menu').appendChild(item);
+    });
+});
