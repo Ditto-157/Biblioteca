@@ -23,7 +23,7 @@ footer{
     
 }
 
-@media only screen and (max-width: 768px)
+@media (max-width: 768px)
 {
     .menu{
         width: 100vw;
@@ -34,6 +34,10 @@ footer{
         justify-content: space-between;
         flex-wrap: wrap;
         
+    }
+    .logo{
+        width: 80vw;
+        height: 20vh;
     }
 }
 
