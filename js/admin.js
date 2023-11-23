@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded",
                 .then((response) => response.json())
             
                 .then(data => {
-                    alert(data);
                     if (!data.message) {
                         let lastPart = window.location.href.split('/');
                         lastPart = lastPart[lastPart.length - 1];

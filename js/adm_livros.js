@@ -50,7 +50,6 @@ function sendNewBookData() {
     
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
-        console.log(child.value)
         if (child.value === "") {
             return alert('Preencha todos os campos corretamente!')
         }
@@ -134,7 +133,6 @@ function insertRow(id, livro) {
                 if (!item.name){
                     break;
                 }
-                console.log(item.name, key)
                 if (item.name === key) {
                     if (key === 'n') {
                         item.value = livro.copies.length;
@@ -205,7 +203,6 @@ function changeTablePage(page) {
         .then(data => {
             let ids = Object.keys(data);
             let livros = Object.values(data);
-            console.log(livros);
             for (let i = 0; i < livros.length; i++) {
                 insertRow(ids[i], livros[i]);
             }
@@ -227,7 +224,6 @@ function deleteBook(form=false) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         window.location.reload();
     });
 }
