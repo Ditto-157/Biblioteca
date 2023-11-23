@@ -340,6 +340,11 @@ function preencherDrop(drop_id) {
     });
 }
 
+function logout() {
+    sessionStorage.clear();
+    window.location.reload();
+}
+
 
 changeTablePage(1);
 setupPagination();
