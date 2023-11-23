@@ -25,6 +25,9 @@ function queryBook(query) {
     })
     .then((response) => response.json())
     .then(data => {
+        if (data.length === 0) {
+            return alert('Nenhum livro encontrado!')
+        }
         let keys = Object.keys(query);
         let ids = Object.keys(data);
         let livros = Object.values(data).sort((book) => {
