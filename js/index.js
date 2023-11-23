@@ -219,3 +219,4 @@ setupPagination();
 preencherDrop('autorDrop');
 preencherDrop('assuntoDrop');
 
+console.log(process.env);
