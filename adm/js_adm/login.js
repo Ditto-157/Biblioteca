@@ -18,7 +18,7 @@ function checkLogin() {
     if (login.value === '' || password.value === '') {
         return showFlash('Preencha todos os campos!');
     }
-    fetch(url + 'admin/check', {
+    fetch(url + 'admin/login', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -33,12 +33,13 @@ function checkLogin() {
     .then((response) => response.json())
 
     .then(data => {
-        console.log(data)
-        if (data.message.match('invalid')) {
+        if (!data.token) {
             return showFlash('Login ou senha inválidos')
         }
         sessionStorage.clear();
-        sessionStorage.setItem('Admin', 'true');
-        window.location.reload();
+        sessionStorage.setItem('token', data.token);
+        let lastPart = window.location.href.split('/');
+        lastPart = lastPart[lastPart.length - 1];
+        window.location.replace(window.location.href.replace(lastPart, 'admin'))
     });
 }
