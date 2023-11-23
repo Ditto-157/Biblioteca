@@ -23,6 +23,12 @@ const fieldLabels = {
     "n": "Quantidade"
 }
 
+pesquisarLivros.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        searchByTitle();
+    }
+});
+
 const keys = Object.keys(fieldLabels);
 const values = Object.values(fieldLabels);
 
