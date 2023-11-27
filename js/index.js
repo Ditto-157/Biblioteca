@@ -1,7 +1,6 @@
 const pesquisarLivros = document.getElementById('pesquisa');
 const livrosRows = document.getElementById('table-livros');
 const url = 'https://apibiblioteca.2.ie-1.fl0.io/';
-const baseData = {key: 'f1563cb61eaf857ce3042c12cd94e774'};
 const tableBody = document.getElementById("table-livros");
 const footer = document.getElementById("footer");
 const flash = document.getElementById('flash-message');
@@ -16,7 +15,7 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 
 function queryBook(query) {
     removeAllRows();
-    query['key'] = baseData.key;
+    query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch(url + "books/search", {
         method: "POST",
         headers: {
@@ -115,7 +114,7 @@ function changeTablePage(page) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                key: baseData.key,
+                key: 'f1563cb61eaf857ce3042c12cd94e774',
                 page: page
             })
         })
@@ -187,7 +186,7 @@ function preencherDrop(drop_id) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            key: baseData.key,
+            key: 'f1563cb61eaf857ce3042c12cd94e774',
             field: dropField
         })
     })
