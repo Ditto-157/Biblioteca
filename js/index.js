@@ -52,6 +52,12 @@ function hideFlash() {
     flash.classList.add('d-none');
 }
 
+function foooterAbsolute() {
+    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
+        footer.style.position = 'relative';
+    };
+}
+
 function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i ++) {
@@ -61,9 +67,7 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
-    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
-        footer.style.position = 'relative';
-    };
+    foooterAbsolute();
     var row = tableBody.insertRow();
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -120,6 +124,7 @@ function changeTablePage(page) {
             }
             pages.push(page);
         });
+        foooterAbsolute();
     }
 }
 

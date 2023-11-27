@@ -113,6 +113,12 @@ function newBook() {
     }
 }
 
+function foooterAbsolute() {
+    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
+        footer.style.position = 'relative';
+    };
+}
+
 function showFlash(text) {
     flash.textContent = text;
     flash.classList.remove('d-none');
@@ -131,10 +137,7 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
-    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
-        footer.style.position = 'relative';
-        console.log('É maior')
-    };
+    foooterAbsolute();
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
@@ -223,6 +226,7 @@ function changeTablePage(page) {
             }
             pages.push(page);
         });
+        foooterAbsolute();
     }
 }
 
