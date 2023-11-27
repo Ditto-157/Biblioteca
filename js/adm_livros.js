@@ -144,7 +144,7 @@ function insertRow(id, livro) {
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
-        formDados.book_id = id;
+        window.book_id = id;
         for (let i = 0; i < formDados.children.length; i ++) {
             item = formDados.children.item(i);
             for (let key of Object.keys(fieldLabels)) {
@@ -238,13 +238,13 @@ function changeTablePage(page) {
 
 function modalButton() {
     if (modalTitle.innerHTML.match('Editar')) {
-        deleteBook(true); 
+        deleteBook(); 
     }
     sendNewBookData(); 
     document.getElementById('closeModalId').click();
 }
 
-function deleteBook(form=false) {
+function deleteBook() {
     fetch(url + "book/delete", {
         method: "POST",
         headers: {
@@ -252,7 +252,7 @@ function deleteBook(form=false) {
         },
         body: JSON.stringify({
             key: 'f1563cb61eaf857ce3042c12cd94e774',
-            book_id: form ? formDados.book_id.toString() : modalExcluir.book_id.toString()
+            book_id: window.book_id
         })
     })
     .then(response => response.json())
