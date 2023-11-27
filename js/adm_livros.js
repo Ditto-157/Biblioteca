@@ -8,7 +8,7 @@ const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
 const footer = document.getElementById("footer");
-var changingPage = false;
+let changingPage = false;
 var pages = [];
 var current_page = null;
 

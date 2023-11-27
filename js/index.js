@@ -6,7 +6,7 @@ const footer = document.getElementById("footer");
 const flash = document.getElementById('flash-message');
 var pages = [];
 var current_page = null;
-var changingPage = false;
+let changingPage = false;
 
 pesquisarLivros.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
