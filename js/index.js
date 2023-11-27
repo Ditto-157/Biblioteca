@@ -137,7 +137,7 @@ function setupPagination() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(baseData)
+        body: JSON.stringify({key: 'f1563cb61eaf857ce3042c12cd94e774'})
     })
     .then(response => response.json())
     .then(data => {
