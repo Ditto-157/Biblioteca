@@ -231,7 +231,7 @@ function changeTablePage(page) {
 }
 
 function modalButton() {
-    if (modalTitle.match('Editar')) {
+    if (modalTitle.innerHTML.match('Editar')) {
         deleteBook(true); 
     }
     sendNewBookData(); 
