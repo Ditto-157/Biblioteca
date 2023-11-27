@@ -16,7 +16,6 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 
 function queryBook(query) {
     removeAllRows();
-    footer.classList.add('absolute');
     query['key'] = baseData.key;
     fetch(url + "books/search", {
         method: "POST",
@@ -42,7 +41,6 @@ function queryBook(query) {
             insertRow(ids[i], livros[i]);
         }
     });
-    footer.classList.remove('absolute');
 }
 
 function showFlash(text) {
@@ -55,6 +53,7 @@ function hideFlash() {
 }
 
 function removeAllRows() {
+    footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i ++) {
         let item = tableBody.children.item(i);
         item.style.display = 'none';
@@ -62,6 +61,10 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
+    
+    if (footer.style.position === 'absolute') {
+        footer.style.position = 'relative';
+    };
     var row = tableBody.insertRow();
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -221,48 +224,3 @@ changeTablePage(1);
 setupPagination();
 preencherDrop('autorDrop');
 preencherDrop('assuntoDrop');
-
-fetch(window.location.href + '/api', {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        key: baseData.key,
-        field: dropField
-    })
-})
-.then(response => response.json())
-.then(data => {
-    const dropdown = document.getElementById(drop_id);
-
-    var menu = dropdown.querySelector('.dropdown-menu');
-    menu.innerHTML = '';
-
-    const todosItem = document.createElement('li');
-    todosItem.classList.add('dropdown-item');
-    todosItem.dataset.value = '';
-    todosItem.textContent = 'Todos ' + all_text;
-    todosItem.addEventListener('click', () => {changeTablePage(1);});
-    menu.appendChild(todosItem);
-
-    let looked = [];
-
-    data.values.forEach(value => {
-        if (looked.includes(value)) {
-            return;
-        }
-        looked.push(value);
-        const item = document.createElement('li');
-        item.classList.add('dropdown-item');
-        item.dataset.value = value;
-        item.textContent = value;
-        let query = {}
-        query[dropField] = value;
-        item.addEventListener('click', () => {
-            queryBook(query);
-        })
-
-        dropdown.querySelector('.dropdown-menu').appendChild(item);
-    });
-});
