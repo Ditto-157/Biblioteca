@@ -61,8 +61,7 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
-    let windowHeight = window.innerHeight || document.documentElement.clientHeight;
-    if (footer.style.position === 'absolute' && windowHeight > document.body.clientHeight) {
+    if (footer.style.position === 'absolute' && window.innerHeight > document.body.scrollHeight) {
         footer.style.position = 'relative';
     };
     var row = tableBody.insertRow();
