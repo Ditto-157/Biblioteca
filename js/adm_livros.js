@@ -230,6 +230,14 @@ function changeTablePage(page) {
     foooterAbsolute();
 }
 
+function modalButton() {
+    if (modalTitle.match('Editar')) {
+        deleteBook(true); 
+    }
+    sendNewBookData(); 
+    document.getElementById('closeModalId').click();
+}
+
 function deleteBook(form=false) {
     fetch(url + "book/delete", {
         method: "POST",
