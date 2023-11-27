@@ -131,7 +131,7 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
-    if (footer.style.position === 'absolute' && window.innerHeight > document.body.scrollHeight) {
+    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
         footer.style.position = 'relative';
         console.log('É maior')
     };
