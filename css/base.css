@@ -7,6 +7,12 @@ header{
 
 footer{
     background-color: #003366;
+    position: relative;
+    width: 100vw;
+}
+
+footer.absolute {
+    background-color: #003366;
     position: absolute;
     bottom: 0;
     width: 100vw;
