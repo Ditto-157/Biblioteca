@@ -6,6 +6,7 @@ const footer = document.getElementById("footer");
 const flash = document.getElementById('flash-message');
 var pages = [];
 var current_page = null;
+const changingPage = false;
 
 pesquisarLivros.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -97,6 +98,10 @@ function searchByTitle() {
 }
 
 function changeTablePage(page) {
+    if (changingPage) {
+        return false;
+    }
+    changingPage = true;
     removeAllRows();
     var page = page;
     if (pages.includes(page)) {
@@ -126,6 +131,7 @@ function changeTablePage(page) {
                 insertRow(ids[i], livros[i]);
             }
             pages.push(page);
+            changingPage = false;
         });
     }
     foooterAbsolute();

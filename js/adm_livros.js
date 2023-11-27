@@ -8,6 +8,7 @@ const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
 const footer = document.getElementById("footer");
+const changingPage = false;
 var pages = [];
 var current_page = null;
 
@@ -195,6 +196,10 @@ function searchByTitle() {
 }
 
 function changeTablePage(page) {
+    if (changingPage) {
+        return false;
+    }
+    changingPage = true;
     removeAllRows();
     var page = page;
     if (pages.includes(page)) {
@@ -224,6 +229,7 @@ function changeTablePage(page) {
                 insertRow(ids[i], livros[i]);
             }
             pages.push(page);
+            changingPage = false;
         });
     }
     foooterAbsolute();
