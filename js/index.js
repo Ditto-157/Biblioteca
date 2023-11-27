@@ -124,8 +124,8 @@ function changeTablePage(page) {
             }
             pages.push(page);
         });
-        foooterAbsolute();
     }
+    foooterAbsolute();
 }
 
 function setupPagination() {
