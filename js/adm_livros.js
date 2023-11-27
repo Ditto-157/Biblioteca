@@ -8,6 +8,7 @@ const modalTitle = document.getElementById("modalTitleId");
 const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
+const footer = document.getElementById("footer");
 var pages = [];
 var current_page = null;
 
@@ -122,6 +123,7 @@ function hideFlash() {
 }
 
 function removeAllRows() {
+    footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i ++) {
         let item = tableBody.children.item(i);
         item.style.display = 'none';
@@ -129,6 +131,9 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
+    if (footer.style.position === 'absolute') {
+        footer.style.position = 'relative';
+    };
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');

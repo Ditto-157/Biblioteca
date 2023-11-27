@@ -61,7 +61,6 @@ function removeAllRows() {
 }
 
 function insertRow(id, livro) {
-    
     if (footer.style.position === 'absolute') {
         footer.style.position = 'relative';
     };
