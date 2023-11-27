@@ -112,6 +112,7 @@ function changeTablePage(page) {
                 item.style.display = 'table-row';
             }
         }
+        changingPage = false;
     } else {
         fetch(url + "books/page", {
             method: "POST",
