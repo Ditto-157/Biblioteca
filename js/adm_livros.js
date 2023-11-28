@@ -53,7 +53,7 @@ for (let i = 0; i < keys.length; i++) {
 
 function sendNewBookData() {
     var formData = new FormData(formDados);
-    
+
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
         if (child.value === "") {
@@ -67,11 +67,11 @@ function sendNewBookData() {
         body: formData
     })
 
-    .then((response) => response.text())
+        .then((response) => response.text())
 
-    .then(data => {
-        window.location.reload();
-    });
+        .then(data => {
+            window.location.reload();
+        });
 }
 
 function queryBook(query) {
@@ -85,25 +85,25 @@ function queryBook(query) {
         },
         body: JSON.stringify(query)
     })
-    .then((response) => response.json())
-    .then(data => {
-        loadingLivros.style.display = 'none';
-        if (Object.keys(data).length === 0) {
-            alert('Nenhum livro encontrado!');
-            return changeTablePage(1);
-        }
-        let keys = Object.keys(query);
-        let ids = Object.keys(data);
-        let livros = Object.values(data).sort((book) => {
-            
-            let search = query[keys[0]].toLowerCase();
-            let bookValue = book[keys[0]].toLowerCase();
-            return bookValue === search ? -1 : 1;
+        .then((response) => response.json())
+        .then(data => {
+            loadingLivros.style.display = 'none';
+            if (Object.keys(data).length === 0) {
+                alert('Nenhum livro encontrado!');
+                return changeTablePage(1);
+            }
+            let keys = Object.keys(query);
+            let ids = Object.keys(data);
+            let livros = Object.values(data).sort((book) => {
+
+                let search = query[keys[0]].toLowerCase();
+                let bookValue = book[keys[0]].toLowerCase();
+                return bookValue === search ? -1 : 1;
+            });
+            for (let i = 0; i < livros.length; i++) {
+                insertRow(ids[i], livros[i]);
+            }
         });
-        for (let i = 0; i < livros.length; i++) {
-            insertRow(ids[i], livros[i]);
-        }
-    });
 }
 
 function newBook() {
@@ -111,7 +111,7 @@ function newBook() {
         let child = formDados.children.item(i);
         if (child.id.match('input_')) {
             child.value = '';
-        }   
+        }
     }
 }
 
@@ -133,7 +133,7 @@ function hideFlash() {
 
 function removeAllRows() {
     footer.style.position = 'absolute';
-    for (let i = 0; i < tableBody.children.length; i ++) {
+    for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         item.style.display = 'none';
     };
@@ -148,10 +148,10 @@ function insertRow(id, livro) {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
         window.book_id = id;
-        for (let i = 0; i < formDados.children.length; i ++) {
+        for (let i = 0; i < formDados.children.length; i++) {
             item = formDados.children.item(i);
             for (let key of Object.keys(fieldLabels)) {
-                if (!item.name){
+                if (!item.name) {
                     break;
                 }
                 if (item.name === key) {
@@ -207,9 +207,9 @@ function changeTablePage(page) {
     var page = page;
     if (pages.includes(page)) {
         let start = ((page - 1) * 24);
-        for (let i = 0; i < tableBody.children.length; i ++) {
+        for (let i = 0; i < tableBody.children.length; i++) {
             let item = tableBody.children.item(i);
-            if (i < start + 24 && i >= start ) {
+            if (i < start + 24 && i >= start) {
                 item.style.display = 'table-row';
             }
         }
@@ -226,17 +226,17 @@ function changeTablePage(page) {
                 page: page
             })
         })
-        .then((response) => response.json())
-        .then(data => {
-            let ids = Object.keys(data);
-            let livros = Object.values(data);
-            for (let i = 0; i < livros.length; i++) {
-                insertRow(ids[i], livros[i]);
-            }
-            pages.push(page);
-            changingPage = false;
-            loadingLivros.style.display = 'none';
-        });
+            .then((response) => response.json())
+            .then(data => {
+                let ids = Object.keys(data);
+                let livros = Object.values(data);
+                for (let i = 0; i < livros.length; i++) {
+                    insertRow(ids[i], livros[i]);
+                }
+                pages.push(page);
+                changingPage = false;
+                loadingLivros.style.display = 'none';
+            });
 
     }
     foooterAbsolute();
@@ -244,9 +244,9 @@ function changeTablePage(page) {
 
 function modalButton() {
     if (modalTitle.innerHTML.match('Editar')) {
-        deleteBook(); 
+        deleteBook();
     }
-    sendNewBookData(); 
+    sendNewBookData();
     document.getElementById('closeModalId').click();
 }
 
@@ -261,10 +261,10 @@ function deleteBook() {
             book_id: window.book_id
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        window.location.reload();
-    });
+        .then(response => response.json())
+        .then(data => {
+            window.location.reload();
+        });
 }
 
 function setupPagination() {
@@ -273,31 +273,31 @@ function setupPagination() {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({key: 'f1563cb61eaf857ce3042c12cd94e774'})
+        body: JSON.stringify({ key: 'f1563cb61eaf857ce3042c12cd94e774' })
     })
-    .then(response => response.json())
-    .then(data => {
-        totalItems = data.len;
-        var totalPages = Math.ceil(totalItems / 24);
-        var pagination = document.getElementById("pagination");
-        pagination.innerHTML = "";
+        .then(response => response.json())
+        .then(data => {
+            totalItems = data.len;
+            var totalPages = Math.ceil(totalItems / 24);
+            var pagination = document.getElementById("pagination");
+            pagination.innerHTML = "";
 
-        for (var i = 1; i <= totalPages; i++) {
-            var li = document.createElement("li");
-            var a = document.createElement("a");
-            li.classList.add("page-item");
-            a.classList.add("page-link");
-            a.innerHTML = i;
+            for (var i = 1; i <= totalPages; i++) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                li.classList.add("page-item");
+                a.classList.add("page-link");
+                a.innerHTML = i;
 
-            a.onclick = (function (page) {
-                return function () {
-                    changeTablePage(page);
-                };
-            })(i);
-            li.appendChild(a);
-            pagination.appendChild(li);
-        }
-    });
+                a.onclick = (function (page) {
+                    return function () {
+                        changeTablePage(page);
+                    };
+                })(i);
+                li.appendChild(a);
+                pagination.appendChild(li);
+            }
+        });
 }
 
 function preencherDrop(drop_id) {
@@ -320,7 +320,7 @@ function preencherDrop(drop_id) {
             dropField = 'prateleira';
             all_text = 'as prateleiras';
             break;
-        default: 
+        default:
             break;
     }
 
@@ -334,40 +334,40 @@ function preencherDrop(drop_id) {
             field: dropField
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        const dropdown = document.getElementById(drop_id);
+        .then(response => response.json())
+        .then(data => {
+            const dropdown = document.getElementById(drop_id);
 
-        var menu = dropdown.querySelector('.dropdown-menu');
-        menu.innerHTML = '';
+            var menu = dropdown.querySelector('.dropdown-menu');
+            menu.innerHTML = '';
 
-        const todosItem = document.createElement('li');
-        todosItem.classList.add('dropdown-item');
-        todosItem.dataset.value = '';
-        todosItem.textContent = 'Todos ' + all_text;
-        todosItem.addEventListener('click', () => {changeTablePage(1);});
-        menu.appendChild(todosItem);
+            const todosItem = document.createElement('li');
+            todosItem.classList.add('dropdown-item');
+            todosItem.dataset.value = '';
+            todosItem.textContent = 'Todos ' + all_text;
+            todosItem.addEventListener('click', () => { changeTablePage(1); });
+            menu.appendChild(todosItem);
 
-        let looked = [];
+            let looked = [];
 
-        data.values.forEach(value => {
-            if (looked.includes(value)) {
-                return;
-            }
-            looked.push(value);
-            const item = document.createElement('li');
-            item.classList.add('dropdown-item');
-            item.dataset.value = value;
-            item.textContent = value;
-            let query = {}
-            query[dropField] = value;
-            item.addEventListener('click', () => {
-                queryBook(query);
-            })
+            data.values.forEach(value => {
+                if (looked.includes(value)) {
+                    return;
+                }
+                looked.push(value);
+                const item = document.createElement('li');
+                item.classList.add('dropdown-item');
+                item.dataset.value = value;
+                item.textContent = value;
+                let query = {}
+                query[dropField] = value;
+                item.addEventListener('click', () => {
+                    queryBook(query);
+                })
 
-            dropdown.querySelector('.dropdown-menu').appendChild(item);
+                dropdown.querySelector('.dropdown-menu').appendChild(item);
+            });
         });
-    });
 }
 
 function logout() {

@@ -26,7 +26,7 @@
     <div id="container">
         <header class="d-flex text-white" style="align-items: center;">
             <img src="/img/logo-biblioteca.jpeg" class="rounded-ci my-2"
-            style="width: 6em; margin-top: 3%; margin-left: 12.5%; border-radius: 50%; height: 4rem;">
+                style="width: 6em; margin-top: 3%; margin-left: 12.5%; border-radius: 50%; height: 4rem;">
             <h1 class="display-1 ms-2">Biblioteca</h1>
         </header>
         <nav>
@@ -67,8 +67,7 @@
                             </div>
                         </div>
                         <div class="modal-footer d-flex justify-content-around">
-                            <button type="button" class="btn btn-primary"
-                                onclick="modalButton();">Salvar</button>
+                            <button type="button" class="btn btn-primary" onclick="modalButton();">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -114,8 +113,8 @@
                         </ul>
                     </div>
                     <div class="p-1 col-12"><button class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#modalId"
-                            onclick="modalTitle.innerHTML = 'Novo livro'; newBook()">Adicionar livro</button>
+                            data-bs-target="#modalId" onclick="modalTitle.innerHTML = 'Novo livro'; newBook()">Adicionar
+                            livro</button>
                     </div>
                 </div>
             </div>
@@ -138,12 +137,14 @@
                             </tr>
                         </thead>
                         <tbody id="table-livros">
-                        
+
                         </tbody>
-                            
+
 
                     </table>
-                    <div style="display: flex; justify-content: center"><div id="loading-livros"></div></div>
+                    <div style="display: flex; justify-content: center">
+                        <div id="loading-livros"></div>
+                    </div>
 
                     <br>
                     <!-- Modal -->
@@ -231,7 +232,8 @@
             </script>
 
         </main>
-        <footer id="footer" class="text-white d-flex flex-column justify-content-center align-items-center" style="padding-top: 0.75em;">
+        <footer id="footer" class="text-white d-flex flex-column justify-content-center align-items-center"
+            style="padding-top: 0.75em;">
             <!-- place footer here -->
 
             <p><a href="https://instagram.com/biblioteca_milagres?igshid=NGVhN2U2NjQ0Yg=="
@@ -248,7 +250,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
             integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
             </script>
-        
+
         <script src="/js/admin.js"></script>
         <script src="/js/adm_livros.js"></script>
     </div>
