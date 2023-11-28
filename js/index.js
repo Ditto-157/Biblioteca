@@ -1,8 +1,8 @@
 const pesquisarLivros = document.getElementById('pesquisa');
-const livrosRows = document.getElementById('table-livros');
 const tableBody = document.getElementById("table-livros");
 const footer = document.getElementById("footer");
 const flash = document.getElementById('flash-message');
+var loadingLivros = document.getElementById('loading-livros');
 var pages = [];
 var current_page = null;
 let changingPage = false;
@@ -14,6 +14,7 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 });
 
 function queryBook(query) {
+    loadingLivros.style.display = 'flex';
     removeAllRows();
     query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
@@ -39,6 +40,7 @@ function queryBook(query) {
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
+        loadingLivros.style.display = 'none';
     });
 }
 
@@ -101,6 +103,7 @@ function changeTablePage(page) {
         return false;
     }
     changingPage = true;
+    loadingLivros.style.display = 'flex';
     removeAllRows();
     var page = page;
     if (pages.includes(page)) {
@@ -132,6 +135,7 @@ function changeTablePage(page) {
             }
             pages.push(page);
             changingPage = false;
+            loadingLivros.style.display = 'none';
         });
     }
     foooterAbsolute();

@@ -1,5 +1,4 @@
 const pesquisarLivros = document.getElementById('pesquisa');
-const livrosRows = document.getElementById('table-livros');
 const tableBody = document.getElementById("table-livros");
 const modalExcluir = document.getElementById("modalExcluir");
 const modalTitle = document.getElementById("modalTitleId");
@@ -7,6 +6,7 @@ const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
 const footer = document.getElementById("footer");
+var loadingLivros = document.getElementById('loading-livros');
 let changingPage = false;
 var pages = [];
 var current_page = null;

@@ -1,6 +1,7 @@
 const login = document.getElementById('login');
 const password = document.getElementById('password');
 const flash = document.getElementById('flash-message');
+var loading = document.getElementById('loading');
 
 function showFlash(text) {
     flash.textContent = text;
@@ -12,6 +13,7 @@ function hideFlash() {
 }
 
 function checkLogin() {
+    loading.style.display = 'flex';
     hideFlash();
     if (login.value === '' || password.value === '') {
         return showFlash('Preencha todos os campos!');
@@ -31,6 +33,7 @@ function checkLogin() {
     .then((response) => response.json())
 
     .then(data => {
+        loading.style.display = 'none';
         if (!data.token) {
             return showFlash('Login ou senha inválidos')
         }
