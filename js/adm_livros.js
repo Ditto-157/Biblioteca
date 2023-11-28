@@ -88,7 +88,7 @@ function queryBook(query) {
     .then((response) => response.json())
     .then(data => {
         loadingLivros.style.display = 'flex';
-        if (data.length === 0) {
+        if (Object.keys(data).length === 0) {
             alert('Nenhum livro encontrado!');
             return changeTablePage(1);
         }
