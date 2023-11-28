@@ -51,11 +51,6 @@ for (let i = 0; i < keys.length; i++) {
     formDados.appendChild(input);
 }
 
-function setLoading(on) {
-    loading.style.display = on ? 'block' : 'none';
-    tableBody.style.display = !on ? 'block' : 'none';
-}
-
 function sendNewBookData() {
     var formData = new FormData(formDados);
     
@@ -81,7 +76,6 @@ function sendNewBookData() {
 
 function queryBook(query) {
     removeAllRows();
-    setLoading(true);
     query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
         method: "POST",
@@ -106,7 +100,7 @@ function queryBook(query) {
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
-        setLoading(false);
+
     });
 }
 
@@ -205,7 +199,6 @@ function changeTablePage(page) {
     if (changingPage) {
         return false;
     }
-    setLoading(true);
     changingPage = true;
     removeAllRows();
     var page = page;
@@ -239,7 +232,7 @@ function changeTablePage(page) {
             pages.push(page);
             changingPage = false;
         });
-        setLoading(false);
+
     }
     foooterAbsolute();
 }
