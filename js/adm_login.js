@@ -1,7 +1,7 @@
 const login = document.getElementById('login');
 const password = document.getElementById('password');
 const flash = document.getElementById('flash-message');
-var loading = document.getElementById('loadingLivros');
+var loading = document.getElementById('loading-livros');
 
 function showFlash(text) {
     flash.textContent = text;
