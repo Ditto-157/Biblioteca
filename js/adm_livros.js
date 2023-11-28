@@ -202,7 +202,6 @@ function changeTablePage(page) {
         return false;
     }
     changingPage = true;
-    loadingLivros.style.display = 'flex';
     removeAllRows();
     var page = page;
     if (pages.includes(page)) {
@@ -215,6 +214,7 @@ function changeTablePage(page) {
         }
         changingPage = false;
     } else {
+        loadingLivros.style.display = 'flex';
         fetch("https://apibiblioteca.2.ie-1.fl0.io/books/page", {
             method: "POST",
             headers: {
