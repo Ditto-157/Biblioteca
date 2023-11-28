@@ -8,7 +8,9 @@
     <h1>Página não encontrada</h1>
     <a href="/">Volte à página inicial</a>
     <script>
-        setTimeout(() => {window.open(window.location.href.split('/')[0]);}, 1000);
+        document.addEventListener('DOMContentLoaded', (event) => {
+            window.open(window.location.href.split('/')[0], 5000);
+        })
     </script>
 </body>
 
