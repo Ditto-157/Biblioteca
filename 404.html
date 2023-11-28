@@ -6,10 +6,10 @@
 
 <body>
     <h1>Página não encontrada</h1>
-    <a href="/">Volte à página inicial</a>
+    <a id='link' href="/">Volte à página inicial</a>
     <script>
         document.addEventListener('DOMContentLoaded', (event) => {
-            window.open(window.location.href.split('/')[0], 5000);
+            document.getElementById('link').click();
         })
     </script>
 </body>
