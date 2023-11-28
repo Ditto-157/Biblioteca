@@ -25,7 +25,7 @@ function checkLogin() {
         },
         body: JSON.stringify({
             key: 'f1563cb61eaf857ce3042c12cd94e774',
-            login: login.value,
+            login: login.value.replace(' ', ''),
             password: password.value
         })
     })
