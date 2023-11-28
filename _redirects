@@ -1,4 +1,4 @@
 /admin/login /login_adm.html 200
 /admin /adm_livros.html 200
 /about /sobre.html 200
-/* /index.html 200
+/* / 301
