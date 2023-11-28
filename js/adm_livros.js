@@ -75,7 +75,7 @@ function sendNewBookData() {
 }
 
 function queryBook(query) {
-    loadingLivros.style.display = 'block';
+    loadingLivros.style.display = 'flex';
     removeAllRows();
     query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
@@ -101,7 +101,7 @@ function queryBook(query) {
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
-        loadingLivros.style.display = 'block';
+        loadingLivros.style.display = 'flex';
     });
 }
 
@@ -202,7 +202,7 @@ function changeTablePage(page) {
         return false;
     }
     changingPage = true;
-    loadingLivros.style.display = 'block';
+    loadingLivros.style.display = 'flex';
     removeAllRows();
     var page = page;
     if (pages.includes(page)) {
