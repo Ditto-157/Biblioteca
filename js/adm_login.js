@@ -1,7 +1,5 @@
-
 const login = document.getElementById('login');
 const password = document.getElementById('password');
-const url = 'https://apibiblioteca.2.ie-1.fl0.io/';
 const flash = document.getElementById('flash-message');
 
 function showFlash(text) {
@@ -18,7 +16,7 @@ function checkLogin() {
     if (login.value === '' || password.value === '') {
         return showFlash('Preencha todos os campos!');
     }
-    fetch(url + 'admin/login', {
+    fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/login', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

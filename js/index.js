@@ -1,6 +1,5 @@
 const pesquisarLivros = document.getElementById('pesquisa');
 const livrosRows = document.getElementById('table-livros');
-const url = 'https://apibiblioteca.2.ie-1.fl0.io/';
 const tableBody = document.getElementById("table-livros");
 const footer = document.getElementById("footer");
 const flash = document.getElementById('flash-message');
@@ -17,7 +16,7 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 function queryBook(query) {
     removeAllRows();
     query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
-    fetch(url + "books/search", {
+    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -114,7 +113,7 @@ function changeTablePage(page) {
         }
         changingPage = false;
     } else {
-        fetch(url + "books/page", {
+        fetch("https://apibiblioteca.2.ie-1.fl0.io/books/page", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -139,7 +138,7 @@ function changeTablePage(page) {
 }
 
 function setupPagination() {
-    fetch(url + "books/length", {
+    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/length", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -187,7 +186,7 @@ function preencherDrop(drop_id) {
             break;
     }
 
-    fetch(url + "books/field_values", {
+    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/field_values", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
