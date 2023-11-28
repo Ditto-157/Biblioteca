@@ -26,8 +26,10 @@ function queryBook(query) {
     })
     .then((response) => response.json())
     .then(data => {
+        loadingLivros.style.display = 'none';
         if (data.length === 0) {
-            return alert('Nenhum livro encontrado!')
+            alert('Nenhum livro encontrado!');
+            return changeTablePage(1);
         }
         let keys = Object.keys(query);
         let ids = Object.keys(data);
@@ -40,7 +42,6 @@ function queryBook(query) {
         for (let i = 0; i < livros.length; i++) {
             insertRow(ids[i], livros[i]);
         }
-        loadingLivros.style.display = 'none';
     });
 }
 
