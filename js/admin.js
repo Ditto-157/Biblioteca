@@ -1,4 +1,5 @@
 var loading = document.getElementById("loading");
+var loadingLivros = document.getElementById("loading-livros");
 var container = document.getElementById("container");
 
 container.classList.add('invisible')
