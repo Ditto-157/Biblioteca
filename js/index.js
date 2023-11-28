@@ -69,7 +69,7 @@ function removeAllRows() {
 function insertRow(id, livro) {
     foooterAbsolute();
     var row = tableBody.insertRow();
-    let link = '"' + livro.titulo + '"+' + livro.autor;
+    let link = '"' + livro.titulo + '" ' + livro.autor;
     row.addEventListener('click', () => {
         window.open(`https://www.google.com/search?q=${link.replace(' ', '+')}`, "_blank");
     })
