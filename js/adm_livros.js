@@ -52,29 +52,6 @@ for (let i = 0; i < keys.length; i++) {
     formDados.appendChild(input);
 }
 
-function sendNewBookData() {
-    var formData = new FormData(formDados);
-
-    for (let i = 0; i < formDados.children.length; i++) {
-        let child = formDados.children.item(i);
-        if (child.value === "") {
-            return alert('Preencha todos os campos corretamente!')
-        }
-    }
-
-    formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
-    fetch('https://apibiblioteca.2.ie-1.fl0.io/book/new', {
-        method: "POST",
-        body: formData
-    })
-
-        .then((response) => response.text())
-
-        .then(data => {
-            window.location.reload();
-        });
-}
-
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
@@ -108,6 +85,7 @@ function queryBook(query) {
 }
 
 function newBook() {
+    modalTitle.innerHTML = 'Novo livro';
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
         if (child.id.match('input_')) {
@@ -253,10 +231,18 @@ function changeTablePage(page) {
 
 function modalButton() {
     document.getElementById('closeModalId').click();
-    if (modalTitle.innerHTML.match('Editar')) {
-        var formData = new FormData(formDados);
+    var formData = new FormData(formDados);
 
-        formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
+    for (let i = 0; i < formDados.children.length; i++) {
+        let child = formDados.children.item(i);
+        if (child.value === "") {
+            return alert('Preencha todos os campos corretamente!')
+        }
+    }
+
+    formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
+
+    if (modalTitle.innerHTML.match('Editar')) {
         formData.set('book_id', window.book_id);
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
@@ -270,7 +256,20 @@ function modalButton() {
             });
         return 0
     }
-    sendNewBookData();
+
+    fetch('https://apibiblioteca.2.ie-1.fl0.io/book/new', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: formData
+    })
+
+        .then((response) => response.text())
+
+        .then(data => {
+            window.location.reload();
+        });
 
 }
 
