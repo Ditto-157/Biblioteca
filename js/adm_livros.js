@@ -179,14 +179,18 @@ function insertRow(id, livro) {
     var cell6 = row.insertCell(5);
     var cell7 = row.insertCell(6);
     var cell8 = row.insertCell(7);
+    var cell9 = row.insertCell(8);
+    var cell10 = row.insertCell(9);
     cell1.innerHTML = livro.titulo;
     cell2.innerHTML = livro.autor;
-    cell3.innerHTML = livro.assuntos;
-    cell4.innerHTML = livro.CDD;
-    cell5.innerHTML = livro.estante;
-    cell6.innerHTML = livro.prateleira;
-    cell7.innerHTML = livro.copies.length;
-    cell8.innerHTML = `
+    cell3.innerHTML = livro.editora;
+    cell4.innerHTML = livro.edicao;
+    cell5.innerHTML = livro.assuntos;
+    cell6.innerHTML = livro.CDD;
+    cell7.innerHTML = livro.estante;
+    cell8.innerHTML = livro.prateleira;
+    cell9.innerHTML = livro.copies.length;
+    cell10.innerHTML = `
     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + id + `;"> Excluir registro </button>
     `;
 }
