@@ -248,11 +248,26 @@ function changeTablePage(page) {
 }
 
 function modalButton() {
+    document.getElementById('closeModalId').click();
     if (modalTitle.innerHTML.match('Editar')) {
-        deleteBook();
+        var formData = new FormData(formDados);
+
+        formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
+        formData.set('book_id', 'window.book_id');
+        fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
+            method: "POST",
+            body: formData
+        })
+
+            .then((response) => response.text())
+
+            .then(data => {
+                alert(data)
+                window.location.reload();
+            });
     }
     sendNewBookData();
-    document.getElementById('closeModalId').click();
+
 }
 
 function deleteBook() {
