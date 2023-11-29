@@ -4,7 +4,7 @@ const flash = document.getElementById('flash-message');
 var loading = document.getElementById('loading-livros');
 
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'enter') {
+    if (event.key === 'Enter') {
         document.getElementById('login-button').click();
     }
 })
