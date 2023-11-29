@@ -12,7 +12,7 @@ function checkIfAdminIsLogged() {
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
     } else {
         let today = new Date();
-        if (today <= new Date(sessionStorage.getItem('tokenCheckDate'))) {
+        if (today.getDate() <= (new Date(sessionStorage.getItem('tokenCheckDate'))).getDate()) {
             return 0;
         }
         fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/check', {
