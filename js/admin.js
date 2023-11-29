@@ -13,6 +13,8 @@ function checkIfAdminIsLogged() {
     } else {
         let today = new Date();
         if (today.getDate() <= (new Date(sessionStorage.getItem('tokenCheckDate'))).getDate()) {
+            container.classList.remove('invisible');
+            loading.style.display = "none";
             return 0;
         }
         fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/check', {
