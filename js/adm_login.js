@@ -19,11 +19,11 @@ function hideFlash() {
 }
 
 function checkLogin() {
-    loading.style.display = 'flex';
     hideFlash();
     if (login.value === '' || password.value === '') {
         return showFlash('Preencha todos os campos!');
     }
+    loading.style.display = 'flex';
     fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/login', {
         method: "POST",
         headers: {
