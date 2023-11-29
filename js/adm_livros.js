@@ -249,6 +249,7 @@ function changeTablePage(page) {
 
 function modalButton() {
     document.getElementById('closeModalId').click();
+    removeAllRows();
     loadingLivros.style.display = 'flex';
     if (modalTitle.innerHTML.match('Editar')) {
         var formData = new FormData(formDados);
@@ -272,7 +273,6 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                alert(data);
                 window.location.reload();
             });
         return 0
