@@ -7,7 +7,7 @@ loading.style.display = "flex";
 
 function checkIfAdminIsLogged() {
     let today = new Date();
-    if (!sessionStorage.getItem('token') || today > new Date(sessionStorage.getItem('tokenCheckDate'))) {
+    if (!sessionStorage.getItem('token')) {
         let lastPart = window.location.href.split('/');
         lastPart = lastPart[lastPart.length - 1];
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
