@@ -265,6 +265,7 @@ function modalButton() {
                 alert(data)
                 window.location.reload();
             });
+        return 0
     }
     sendNewBookData();
 
