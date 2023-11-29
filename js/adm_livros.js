@@ -262,7 +262,6 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                alert(data)
                 window.location.reload();
             });
         return 0
