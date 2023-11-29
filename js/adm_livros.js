@@ -261,7 +261,7 @@ function modalButton() {
         formData.set('copies', (() => {
             let data = [];
             for (let i = 0; i < parseInt(n); i++) {
-                data.push({'copy_id': i.toString(), 'leitor': false});
+                data.push(JSON.stringify({'copy_id': i.toString(), 'leitor': false}));
             }
             return data;
         })())
