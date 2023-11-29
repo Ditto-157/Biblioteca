@@ -111,6 +111,10 @@ function newBook() {
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
         if (child.id.match('input_')) {
+            if (child.id === 'input_n') {
+                child.value = 1;
+                continue;
+            }
             child.value = '';
         }
     }
