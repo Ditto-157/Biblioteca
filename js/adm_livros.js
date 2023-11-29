@@ -45,7 +45,7 @@ for (let i = 0; i < keys.length; i++) {
     if (keys[i] === 'n') {
         input.setAttribute('type', 'number');
         input.setAttribute('min', '1');
-        input.value = 1;
+        input.value = "1";
     }
     input.classList.add('form-control');
     input.id = 'input_' + keys[i];
