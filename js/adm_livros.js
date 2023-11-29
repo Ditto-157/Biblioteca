@@ -257,7 +257,6 @@ function modalButton() {
         formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
         formData.set('book_id', window.book_id);
         let n = formData.get('n');
-        alert(n)
         formData.delete('n');
         formData.set('copies', (() => {
             let data = [];
@@ -266,13 +265,17 @@ function modalButton() {
             }
             return data;
         })())
-        alert(formData.get('copies'));
+        
+        var data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        }) 
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: formData
+            body: JSON.stringify(data)
         })
 
             .then((response) => response.text())
