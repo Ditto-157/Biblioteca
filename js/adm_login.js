@@ -3,6 +3,12 @@ const password = document.getElementById('password');
 const flash = document.getElementById('flash-message');
 var loading = document.getElementById('loading-livros');
 
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'enter') {
+        document.getElementById('login-button').click();
+    }
+})
+
 function showFlash(text) {
     flash.textContent = text;
     flash.classList.remove('d-none');
