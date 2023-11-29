@@ -14,13 +14,13 @@ var current_page = null;
 const fieldLabels = {
     "titulo": "Título",
     "autor": "Autor",
-    "estante": "Estante",
-    "prateleira": "Prateleira",
     "editora": "Editora",
     "edicao": "Edição",
+    "estante": "Estante",
+    "prateleira": "Prateleira",
     "CDD": "CDD",
+    "n": "Quantidade",
     "assuntos": "Assuntos",
-    "n": "Quantidade"
 }
 
 pesquisarLivros.addEventListener('keydown', (event) => {
