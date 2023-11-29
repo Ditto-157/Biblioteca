@@ -249,40 +249,20 @@ function changeTablePage(page) {
 
 function modalButton() {
     document.getElementById('closeModalId').click();
-    removeAllRows();
-    loadingLivros.style.display = 'flex';
     if (modalTitle.innerHTML.match('Editar')) {
         var formData = new FormData(formDados);
 
         formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
         formData.set('book_id', window.book_id);
-        let n = formData.get('n');
-        formData.delete('n');
-        formData.set('copies', (() => {
-            let data = [];
-            for (let i = 0; i < parseInt(n); i++) {
-                data.push(JSON.stringify({'copy_id': i.toString(), 'leitor': false}));
-            }
-            return data;
-        })())
-        
-        var data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        }) 
-        alert('1')
-        console.log(JSON.stringify(data));
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
+            body: formData
         })
 
             .then((response) => response.text())
 
             .then(data => {
+                alert(data)
                 window.location.reload();
             });
         return 0
