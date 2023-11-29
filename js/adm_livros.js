@@ -254,6 +254,15 @@ function modalButton() {
 
         formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
         formData.set('book_id', window.book_id);
+        let n = formData.get('n')
+        formData.delete('n');
+        formData.set('copies', (() => {
+            let data = [];
+            for (let i = 0; i < parseInt(n); i++) {
+                data.push({'copy_id': n.toString(), 'leitor': false});
+            }
+            return data;
+        })())
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             body: formData
