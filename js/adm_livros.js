@@ -269,6 +269,9 @@ function modalButton() {
         alert(formData.get('copies'));
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: formData
         })
 
