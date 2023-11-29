@@ -6,7 +6,8 @@ container.classList.add('invisible')
 loading.style.display = "flex";
 
 function checkIfAdminIsLogged() {
-    if (!sessionStorage.getItem('token')) {
+    let today = new Date();
+    if (!sessionStorage.getItem('token') || today > new Date(sessionStorage.getItem('tokenCheckDate'))) {
         let lastPart = window.location.href.split('/');
         lastPart = lastPart[lastPart.length - 1];
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
@@ -31,6 +32,7 @@ function checkIfAdminIsLogged() {
             } else {
                 container.classList.remove('invisible');
                 loading.style.display = "none";
+                sessionStorage.setItem('tokenCheckDate', (new Date()).toISOString())
             }
         });
     }
