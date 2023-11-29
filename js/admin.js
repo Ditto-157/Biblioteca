@@ -6,12 +6,15 @@ container.classList.add('invisible')
 loading.style.display = "flex";
 
 function checkIfAdminIsLogged() {
-    let today = new Date();
     if (!sessionStorage.getItem('token')) {
         let lastPart = window.location.href.split('/');
         lastPart = lastPart[lastPart.length - 1];
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
     } else {
+        let today = new Date();
+        if (today <= new Date(sessionStorage.getItem('tokenCheckDate'))) {
+            return 0;
+        }
         fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/check', {
             method: "POST",
             headers: {
