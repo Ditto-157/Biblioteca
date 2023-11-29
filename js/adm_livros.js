@@ -16,10 +16,10 @@ const fieldLabels = {
     "autor": "Autor",
     "editora": "Editora",
     "edicao": "Edição",
-    "estante": "Estante",
-    "prateleira": "Prateleira",
     "CDD": "CDD",
     "n": "Quantidade",
+    "estante": "Estante",
+    "prateleira": "Prateleira",
     "assuntos": "Assuntos",
 }
 
