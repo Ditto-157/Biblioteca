@@ -261,10 +261,11 @@ function modalButton() {
         formData.set('copies', (() => {
             let data = [];
             for (let i = 0; i < parseInt(n); i++) {
-                data.push({'copy_id': n.toString(), 'leitor': false});
+                data.push({'copy_id': i.toString(), 'leitor': false});
             }
             return data;
         })())
+        console.log(formData.get('copies'));
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             body: formData
