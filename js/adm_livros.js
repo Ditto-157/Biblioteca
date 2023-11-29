@@ -270,8 +270,8 @@ function modalButton() {
         formData.forEach((value, key) => {
             data[key] = value;
         }) 
-        console.log(data);
         alert('1')
+        console.log(JSON.stringify(data));
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             headers: {
