@@ -253,7 +253,7 @@ function modalButton() {
         var formData = new FormData(formDados);
 
         formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
-        formData.set('book_id', 'window.book_id');
+        formData.set('book_id', window.book_id);
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             body: formData
