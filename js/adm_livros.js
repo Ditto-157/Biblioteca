@@ -79,7 +79,7 @@ function queryBook(query) {
                 return bookValue === search ? -1 : 1;
             });
             for (let i = 0; i < livros.length; i++) {
-                insertRow(ids[i], livros[i], true);
+                insertRow(ids[i], livros[i], '1');
             }
         });
 }
@@ -118,9 +118,9 @@ function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
-        item.style.display = 'none';
         console.log(item);
-        if (item.getAttribute('query') === 'true') {
+        item.style.display = 'none';
+        if (item.getAttribute('query') === '1') {
             item.remove();
         }
     };
