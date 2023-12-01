@@ -122,7 +122,7 @@ function removeAllRows() {
         item.style.display = 'none';
         let item_book_id = item.getAttribute('book_id');
         if (ids.includes(item_book_id)) {
-            item.remove();
+            item.parentElement.removeChild(item);
             continue;
         }
         ids.push(item_book_id)
