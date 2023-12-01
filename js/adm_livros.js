@@ -118,10 +118,11 @@ function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
-        item.style.display = 'none';
         if (item.getAttribute('query')) {
             tableBody.removeChild(item);
+            continue;
         }
+        item.style.display = 'none';
     };
 }
 
