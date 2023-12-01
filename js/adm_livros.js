@@ -116,15 +116,13 @@ function hideFlash() {
 
 function removeAllRows() { 
     var ids = [];
-    tableBody.childNodes.forEach((value) => {
-        ids.push(value.getAttribute('book_id'))
-    })
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
-        console.log(item);
+        let item_book_id = item.getAttribute('book_id');
+        ids.push(item_book_id)
         item.style.display = 'none';
-        if (ids.includes(item.getAttribute('book_id'))) {
+        if (ids.includes(item_book_id)) {
             item.remove();
         }
     };
