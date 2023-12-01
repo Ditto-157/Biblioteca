@@ -121,7 +121,7 @@ function removeAllRows() {
         item.style.display = 'none';
         console.log(item);
         if (item.getAttribute('query') === 'true') {
-            tableBody.removeChild(item);
+            item.remove();
             console.log(item);
         }
     };
