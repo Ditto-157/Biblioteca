@@ -116,13 +116,12 @@ function hideFlash() {
 
 function removeAllRows() {
     footer.style.position = 'absolute';
-    for (let i = 0; i <= tableBody.children.length; i++) {
+    for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         item.style.display = 'none';
         console.log(item);
         if (item.getAttribute('query') === 'true') {
             item.remove();
-            console.log(item);
         }
     };
 }
