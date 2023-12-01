@@ -117,9 +117,10 @@ function hideFlash() {
 
 function removeAllRows() { 
     footer.style.position = 'absolute';
-    for (let i = 1; i <= window.queryNumber; i++) {
-        tableBody.children.item(tableBody.children.length - i).remove();
+    for (let i = 0; i < window.queryNumber; i++) {
+        tableBody.children.item(tableBody.children.length - i + 1).remove();
     }
+    window.queryNumber = 0;
     for (let i = 0; i < tableBody.children.length; i++) {
         var item = tableBody.children.item(i);
         item.style.display = 'none';
