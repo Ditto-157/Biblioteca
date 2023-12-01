@@ -118,6 +118,7 @@ function hideFlash() {
 function removeAllRows() { 
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
+        console.log(tableBody.children.length - i - 1);
         tableBody.children.item(tableBody.children.length - i - 1).remove();
     }
     window.queryNumber = 0;
@@ -272,7 +273,6 @@ function modalButton() {
         .then((response) => response.text())
 
         .then(data => {
-            alert(data);
             window.location.reload();
         });
 
