@@ -117,12 +117,9 @@ function hideFlash() {
 function removeAllRows() { 
     var ids = [];
     footer.style.position = 'absolute';
-    for (let i = 0; i <= tableBody.children.length; i++) {
-        try {
-            var item = tableBody.children.item(i);
-        } catch (e) {
-            break;
-        }
+    console.log(tableBody.children.length)
+    for (let i = 0; i < tableBody.children.length; i++) {
+        let item = tableBody.children.item(i);
         console.log(item.children.item(0).innerHTML)
         item.style.display = 'none';
         let item_book_id = item.getAttribute('book_id');
@@ -133,6 +130,7 @@ function removeAllRows() {
             console.log(ids);
         }
     };
+    console.log(tableBody.children.length);
 }
 
 function insertRow(id, livro) {
