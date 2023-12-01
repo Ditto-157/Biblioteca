@@ -117,8 +117,12 @@ function hideFlash() {
 function removeAllRows() { 
     var ids = [];
     footer.style.position = 'absolute';
-    for (let i = 0; i < tableBody.childElementCount; i++) {
-        let item = tableBody.children.item(i);
+    for (let i = 0; i <= tableBody.children.length; i++) {
+        try {
+            var item = tableBody.children.item(i);
+        } catch (e) {
+            break;
+        }
         console.log(item.children.item(0).innerHTML)
         item.style.display = 'none';
         let item_book_id = item.getAttribute('book_id');
