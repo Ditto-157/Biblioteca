@@ -10,6 +10,7 @@ var loadingLivros = document.getElementById('loading-livros');
 let changingPage = false;
 var pages = [];
 var current_page = null;
+window.queryRows = []
 
 const fieldLabels = {
     "titulo": "Título",
@@ -81,6 +82,7 @@ function queryBook(query) {
             for (let i = 0; i < livros.length; i++) {
                 insertRow(ids[i], livros[i]);
             }
+            window.queryNumber = livros.length;
         });
 }
 
@@ -115,19 +117,12 @@ function hideFlash() {
 
 
 function removeAllRows() { 
-    var ids = [];
     footer.style.position = 'absolute';
-    console.log(tableBody.children.length)
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
-        console.log(item.children.item(0).innerHTML)
         item.style.display = 'none';
-        let item_book_id = item.getAttribute('book_id');
-        if (ids.includes(item_book_id)) {
-            item.parentElement.removeChild(item);
-        } else {
-            ids.push(item_book_id)
-            console.log(ids);
+        if (i >= (tableBody.children.length - window.queryNumber)) {
+            item.remove();
         }
     };
     console.log(tableBody.children.length);
