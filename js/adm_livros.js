@@ -115,10 +115,9 @@ function hideFlash() {
 }
 
 
-function removeAllRows() { 
+function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
-        console.log(tableBody.children.length - i - 1);
         tableBody.children.item(tableBody.children.length - i - 1).remove();
     }
     window.queryNumber = 0;
@@ -126,7 +125,6 @@ function removeAllRows() {
         var item = tableBody.children.item(i);
         item.style.display = 'none';
     };
-    console.log(tableBody.children.length);
 }
 
 function insertRow(id, livro) {
@@ -134,7 +132,6 @@ function insertRow(id, livro) {
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
-    row.setAttribute('book_id', id);
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';

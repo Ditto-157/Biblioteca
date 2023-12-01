@@ -42,6 +42,7 @@ function queryBook(query) {
             for (let i = 0; i < livros.length; i++) {
                 insertRow(ids[i], livros[i]);
             }
+            window.queryNumber = livros.length;
         });
 }
 
@@ -62,6 +63,10 @@ function foooterAbsolute() {
 
 function removeAllRows() {
     footer.style.position = 'absolute';
+    for (let i = 0; i < window.queryNumber; i++) {
+        tableBody.children.item(tableBody.children.length - i - 1).remove();
+    }
+    window.queryNumber = 0;
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         item.style.display = 'none';
