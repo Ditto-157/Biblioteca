@@ -264,9 +264,6 @@ function modalButton() {
 
     fetch('https://apibiblioteca.2.ie-1.fl0.io/book/new', {
         method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
         body: formData
     })
 
