@@ -10,7 +10,6 @@ var loadingLivros = document.getElementById('loading-livros');
 let changingPage = false;
 var pages = [];
 var current_page = null;
-window.queryRows = []
 
 const fieldLabels = {
     "titulo": "Título",
@@ -118,12 +117,12 @@ function hideFlash() {
 
 function removeAllRows() { 
     footer.style.position = 'absolute';
+    for (let i = 1; i <= window.queryNumber; i++) {
+        tableBody.children.item(tableBody.children.length - i).remove();
+    }
     for (let i = 0; i < tableBody.children.length; i++) {
-        let item = tableBody.children.item(i);
+        var item = tableBody.children.item(i);
         item.style.display = 'none';
-        if (i >= (tableBody.children.length - window.queryNumber)) {
-            item.remove();
-        }
     };
     console.log(tableBody.children.length);
 }
