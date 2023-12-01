@@ -128,7 +128,6 @@ function removeAllRows() {
 
 function insertRow(id, livro, query=false) {
     foooterAbsolute();
-    let query = query;
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
