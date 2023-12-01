@@ -117,7 +117,7 @@ function hideFlash() {
 function removeAllRows() { 
     var ids = [];
     footer.style.position = 'absolute';
-    for (let i = 0; i <= tableBody.childElementCount; i++) {
+    for (let i = 0; i < tableBody.childElementCount; i++) {
         let item = tableBody.children.item(i);
         console.log(item.children.item(0).innerHTML)
         item.style.display = 'none';
