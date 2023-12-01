@@ -119,6 +119,7 @@ function removeAllRows() {
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         if (item.getAttribute('query') === 'true') {
+            console.log(item, item.getAttribute('query'));
             tableBody.removeChild(item);
             continue;
         }
