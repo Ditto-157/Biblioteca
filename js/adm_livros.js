@@ -120,11 +120,13 @@ function removeAllRows() {
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         let item_book_id = item.getAttribute('book_id');
-        ids.push(item_book_id)
-        item.style.display = 'none';
         if (ids.includes(item_book_id)) {
             item.remove();
+            continue;
         }
+        ids.push(item_book_id)
+        item.style.display = 'none';
+        
     };
 }
 
