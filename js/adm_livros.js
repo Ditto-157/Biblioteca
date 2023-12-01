@@ -122,11 +122,12 @@ function removeAllRows() {
     };
 }
 
-function insertRow(id, livro) {
+function insertRow(id, livro, query=false) {
     foooterAbsolute();
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
+    row.setAttribute('query', query);
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
