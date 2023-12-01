@@ -132,7 +132,7 @@ function insertRow(id, livro, query=false) {
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
-    row.setAttribute('query', query);
+    row.setAttribute('query', query ? '1' : false);
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
