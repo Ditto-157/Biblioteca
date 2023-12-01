@@ -118,7 +118,7 @@ function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
-        if (item.getAttribute('query')) {
+        if (item.getAttribute('query') === 'true') {
             tableBody.removeChild(item);
             continue;
         }
@@ -128,6 +128,7 @@ function removeAllRows() {
 
 function insertRow(id, livro, query=false) {
     foooterAbsolute();
+    let query = query;
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
