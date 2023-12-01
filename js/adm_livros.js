@@ -79,7 +79,7 @@ function queryBook(query) {
                 return bookValue === search ? -1 : 1;
             });
             for (let i = 0; i < livros.length; i++) {
-                insertRow(ids[i], livros[i]);
+                insertRow(ids[i], livros[i], true);
             }
         });
 }
