@@ -79,7 +79,7 @@ function queryBook(query) {
                 return bookValue === search ? -1 : 1;
             });
             for (let i = 0; i < livros.length; i++) {
-                insertRow(ids[i], livros[i], '1');
+                insertRow(ids[i], livros[i]);
             }
         });
 }
@@ -114,25 +114,28 @@ function hideFlash() {
 }
 
 
-function removeAllRows() {
+function removeAllRows() { 
+    var ids = [];
+    tableBody.childNodes.forEach((value) => {
+        ids.push(value.getAttribute('book_id'))
+    })
     footer.style.position = 'absolute';
-    console.log(tableBody.childNodes)
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
         console.log(item);
         item.style.display = 'none';
-        if (item.getAttribute('query') === '1') {
+        if (ids.includes(item.getAttribute('book_id'))) {
             item.remove();
         }
     };
 }
 
-function insertRow(id, livro, query=false) {
+function insertRow(id, livro) {
     foooterAbsolute();
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
-    row.setAttribute('query', query ? '1' : false);
+    row.setAttribute('book_id', id);
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
