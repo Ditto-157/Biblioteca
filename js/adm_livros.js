@@ -126,6 +126,7 @@ function removeAllRows() {
         }
         ids.push(item_book_id)
         item.style.display = 'none';
+        console.log(ids);
         
     };
 }
