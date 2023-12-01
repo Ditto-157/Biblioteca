@@ -119,13 +119,13 @@ function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < tableBody.children.length; i++) {
         let item = tableBody.children.item(i);
+        item.style.display = 'none';
         let item_book_id = item.getAttribute('book_id');
         if (ids.includes(item_book_id)) {
             item.remove();
             continue;
         }
         ids.push(item_book_id)
-        item.style.display = 'none';
         console.log(ids);
         
     };
