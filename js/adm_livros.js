@@ -272,6 +272,7 @@ function modalButton() {
         .then((response) => response.text())
 
         .then(data => {
+            loadingLivros.style.display = 'flex';
             window.location.reload();
         });
 
