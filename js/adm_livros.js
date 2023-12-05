@@ -116,6 +116,7 @@ function hideFlash() {
 
 
 function removeAllRows() {
+    window.scrollTo(0, 0);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
         tableBody.children.item(tableBody.children.length - i - 1).remove();
@@ -206,6 +207,7 @@ function changeTablePage(page) {
             }
         }
         changingPage = false;
+        foooterAbsolute();
     } else {
         loadingLivros.style.display = 'flex';
         fetch("https://apibiblioteca.2.ie-1.fl0.io/books/page", {
@@ -228,10 +230,9 @@ function changeTablePage(page) {
                 pages.push(page);
                 changingPage = false;
                 loadingLivros.style.display = 'none';
+                foooterAbsolute();
             });
-
     }
-    foooterAbsolute();
 }
 
 function modalButton() {
