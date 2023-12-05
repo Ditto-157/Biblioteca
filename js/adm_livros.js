@@ -374,12 +374,8 @@ function preencherDrop(drop_id) {
             todosItem.addEventListener('click', () => { changeTablePage(1); });
             menu.appendChild(todosItem);
 
-            let dataValues = Object.values(data);
-            console.log(dataValues)
-            dataValues.sort(function(a, b){
-                return a.localeCompare(b); // Isso vai fazer uma comparação levando em conta maiúsculas e minúsculas
-            });
-            console.log(dataValues)
+            let dataValues = data.values;
+            dataValues.sort();
 
             let looked = [];
             
