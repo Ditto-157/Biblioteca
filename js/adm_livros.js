@@ -374,9 +374,12 @@ function preencherDrop(drop_id) {
             todosItem.addEventListener('click', () => { changeTablePage(1); });
             menu.appendChild(todosItem);
 
-            let looked = [];
+            let dataValues = Object.values(data);
+            dataValues.sort();
 
-            data.values.forEach(value => {
+            let looked = [];
+            
+            dataValues.forEach(value => {
                 if (looked.includes(value)) {
                     return;
                 }
