@@ -43,6 +43,7 @@ function queryBook(query) {
                 insertRow(ids[i], livros[i]);
             }
             window.queryNumber = livros.length;
+            foooterAbsolute();
         });
 }
 
@@ -221,9 +222,12 @@ function preencherDrop(drop_id) {
             todosItem.addEventListener('click', () => { changeTablePage(1); });
             menu.appendChild(todosItem);
 
+            let dataValues = data.values;
+            dataValues.sort();
+
             let looked = [];
 
-            data.values.forEach(value => {
+            dataValues.forEach(value => {
                 if (looked.includes(value)) {
                     return;
                 }

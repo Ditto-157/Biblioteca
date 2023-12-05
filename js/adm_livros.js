@@ -82,6 +82,7 @@ function queryBook(query) {
                 insertRow(ids[i], livros[i]);
             }
             window.queryNumber = livros.length;
+            foooterAbsolute();
         });
 }
 
