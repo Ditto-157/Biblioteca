@@ -54,8 +54,8 @@ function checkLogin() {
         if (!data.token) {
             return showFlash('Login ou senha inválidos')
         }
-        sessionStorage.clear();
-        sessionStorage.setItem('token', data.token);
+        localStorage.clear();
+        localStorage.setItem('token', data.token);
         let newUrl = window.location.href.replace('/login', '/');
         window.location.replace(newUrl);
     });
