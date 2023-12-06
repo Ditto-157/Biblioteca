@@ -57,7 +57,7 @@ function hideFlash() {
 }
 
 function foooterAbsolute() {
-    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
+    if (footer.style.position === 'absolute' && window.innerHeight < document.getElementsByTagName('main').scrollHeight) {
         footer.style.position = 'relative';
     };
 }
