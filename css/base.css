@@ -17,6 +17,11 @@ footer {
     background-color: #666;
 }
 
+.showp{
+    color: aqua;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 @media (max-width: 1200px) {
     .custom-col {
