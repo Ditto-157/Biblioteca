@@ -1,6 +1,7 @@
 const login = document.getElementById('login');
 const password = document.getElementById('password');
 const flash = document.getElementById('flash-message');
+const showButton = document.getElementById('show_password');
 var loading = document.getElementById('loading-livros');
 
 document.addEventListener('keydown', (event) => {
@@ -8,6 +9,16 @@ document.addEventListener('keydown', (event) => {
         document.getElementById('login-button').click();
     }
 })
+
+function showPassword() {
+    if (showButton.innerHTML.match('Mostrar')) {
+        showButton.innerHTML = 'Esconder senha';
+        password.type = 'text';
+    } else {
+        showButton.innerHTML = 'Mostrar senha';
+        password.type = 'password';
+    }
+}
 
 function showFlash(text) {
     flash.textContent = text;
