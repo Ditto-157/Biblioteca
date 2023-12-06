@@ -147,6 +147,7 @@ function insertRow(id, livro) {
     row.addEventListener('click', (event) => {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
+        modalSearch.style.display = 'flex';
         window.book_id = id;
         for (let i = 0; i < formDados.children.length; i++) {
             item = formDados.children.item(i);
@@ -165,8 +166,6 @@ function insertRow(id, livro) {
             }
         }
     });
-    modalTitle.innerHTML = 'Editar livro';
-    modalSearch.style.display = 'flex';
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
