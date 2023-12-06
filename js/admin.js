@@ -6,13 +6,13 @@ container.classList.add('invisible')
 loading.style.display = "flex";
 
 function checkIfAdminIsLogged() {
-    if (!sessionStorage.getItem('token')) {
+    if (!localStorage.getItem('token')) {
         let lastPart = window.location.href.split('/');
         lastPart = lastPart[lastPart.length - 1];
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
     } else {
         let today = new Date();
-        if (today.getDate() <= (new Date(sessionStorage.getItem('tokenCheckDate'))).getDate()) {
+        if (today.getDate() <= (new Date(localStorage.getItem('tokenCheckDate'))).getDate()) {
             container.classList.remove('invisible');
             loading.style.display = "none";
             return 0;
@@ -24,7 +24,7 @@ function checkIfAdminIsLogged() {
             },
             body: JSON.stringify({
                 key: 'f1563cb61eaf857ce3042c12cd94e774',
-                token: sessionStorage.getItem('token')
+                token: localStorage.getItem('token')
             })
         })
         .then((response) => response.json())
@@ -37,7 +37,7 @@ function checkIfAdminIsLogged() {
             } else {
                 container.classList.remove('invisible');
                 loading.style.display = "none";
-                sessionStorage.setItem('tokenCheckDate', (new Date()).toISOString())
+                localStorage.setItem('tokenCheckDate', (new Date()).toISOString())
             }
         });
     }

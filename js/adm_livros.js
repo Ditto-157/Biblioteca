@@ -412,8 +412,10 @@ function preencherDrop(drop_id) {
 }
 
 function logout() {
-    sessionStorage.clear();
-    window.location.reload();
+    localStorage.clear();
+    let lastPart = window.location.href.split('/');
+    lastPart = lastPart[lastPart.length - 1];
+    window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
 }
 
 
