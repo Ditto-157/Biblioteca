@@ -2,6 +2,7 @@ const pesquisarLivros = document.getElementById('pesquisa');
 const tableBody = document.getElementById("table-livros");
 const modalExcluir = document.getElementById("modalExcluir");
 const modalTitle = document.getElementById("modalTitleId");
+const modalSearch = document.getElementById("search-modal-button");
 const formDados = document.getElementById('form-dados');
 const buttons = document.getElementById('div-buttons');
 const flash = document.getElementById('flash-message');
@@ -52,6 +53,14 @@ for (let i = 0; i < keys.length; i++) {
     formDados.appendChild(input);
 }
 
+function search() {
+    let link = '';
+    for (let field of ['titulo', 'autor', 'editora', 'edicao']) {
+        link += '"' + document.getElementById('input_' + field); + '" '
+    }
+    window.open(`https://www.google.com/search?q=${link.replace(' ', '+')}`, "_blank")
+}
+
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
@@ -88,6 +97,7 @@ function queryBook(query) {
 
 function newBook() {
     modalTitle.innerHTML = 'Novo livro';
+    modalSearch.style.display = 'none';
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
         if (child.id.match('input_')) {
@@ -156,6 +166,7 @@ function insertRow(id, livro) {
         }
     });
     modalTitle.innerHTML = 'Editar livro';
+    modalSearch.style.display = 'flex';
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
