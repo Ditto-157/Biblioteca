@@ -101,7 +101,7 @@ function newBook() {
 }
 
 function foooterAbsolute() {
-    if (footer.style.position === 'absolute' && window.innerHeight < document.getElementsByTagName('main').scrollHeight) {
+    if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight) {
         footer.style.position = 'relative';
     };
 }
