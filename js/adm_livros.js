@@ -284,6 +284,7 @@ function modalButton() {
         }
     }
     formData.set('token', localStorage.getItem('token'));
+    formData.set('book_id', window.book_id);
 
     var data = {};
 
@@ -292,7 +293,6 @@ function modalButton() {
     })
 
     if (modalTitle.innerHTML.match('Editar')) {
-        formData.set('book_id', window.book_id);
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
             headers: {
