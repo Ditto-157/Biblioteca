@@ -283,14 +283,22 @@ function modalButton() {
             return alert('Preencha todos os campos corretamente!')
         }
     }
-
     formData.set('token', localStorage.getItem('token'));
+
+    var data = {};
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    })
 
     if (modalTitle.innerHTML.match('Editar')) {
         formData.set('book_id', window.book_id);
         fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
             method: "POST",
-            body: formData
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
         })
 
             .then((response) => response.text())
@@ -305,7 +313,10 @@ function modalButton() {
 
     fetch('https://apibiblioteca.2.ie-1.fl0.io/book/new', {
         method: "POST",
-        body: formData
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
     })
 
         .then((response) => response.text())
