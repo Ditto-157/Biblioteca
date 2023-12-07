@@ -304,10 +304,9 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                console.log(data)
                 removeAllRows();
                 loadingLivros.style.display = 'flex';
-                //window.location.reload();
+                window.location.reload();
             });
         return 0
     }
