@@ -226,7 +226,6 @@ function loadData() {
                 URL.revokeObjectURL(url);
             }, 0);
         });
-});
 }
 
 function changeTablePage(page) {
