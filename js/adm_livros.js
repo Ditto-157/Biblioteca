@@ -296,8 +296,7 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                console.log(data);
-                //window.location.reload();
+                window.location.reload();
             });
         return 0
     }
@@ -311,8 +310,7 @@ function modalButton() {
 
         .then(data => {
             loadingLivros.style.display = 'flex';
-            console.log(data);
-            //window.location.reload();
+            window.location.reload();
         });
 
 }
