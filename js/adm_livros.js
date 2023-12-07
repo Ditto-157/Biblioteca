@@ -200,6 +200,21 @@ function searchByTitle() {
     });
 }
 
+function loadData() {
+    fetch("https://apibiblioteca.2.ie-1.fl0.io/get/data", {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        token: localStorage.getItem('token')
+    })
+})
+    .then((response) => response.json())
+    .then(data => {
+    });
+}
+
 function changeTablePage(page) {
     if (changingPage) {
         return false;
