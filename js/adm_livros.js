@@ -202,17 +202,31 @@ function searchByTitle() {
 
 function loadData() {
     fetch("https://apibiblioteca.2.ie-1.fl0.io/get/data", {
-    method: "POST",
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-        token: localStorage.getItem('token')
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            token: localStorage.getItem('token')
+        })
     })
-})
-    .then((response) => response.json())
-    .then(data => {
-    });
+        .then(response => response.blob())
+        .then(blob => {
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'livros.xsls';
+            document.body.appendChild(a);
+            a.click();
+
+            // Limpar o elemento <a> após o download
+            setTimeout(() => {
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }, 0);
+        });
+});
 }
 
 function changeTablePage(page) {
@@ -405,7 +419,7 @@ function preencherDrop(drop_id) {
             dataValues.sort();
 
             let looked = [];
-            
+
             dataValues.forEach(value => {
                 if (looked.includes(value)) {
                     return;
