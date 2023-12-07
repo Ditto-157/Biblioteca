@@ -201,6 +201,7 @@ function searchByTitle() {
 }
 
 function loadData() {
+    loadingLivros.style.display = 'flex';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/get/data", {
         method: "POST",
         headers: {
@@ -216,7 +217,7 @@ function loadData() {
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'livros.xslx';
+            a.download = 'livros.xlsx';
             document.body.appendChild(a);
             a.click();
 
@@ -225,6 +226,7 @@ function loadData() {
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
             }, 0);
+            loadingLivros.style.display = 'none';
         });
 }
 
