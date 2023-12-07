@@ -296,7 +296,8 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                window.location.reload();
+                console.log(data);
+                //window.location.reload();
             });
         return 0
     }
@@ -310,7 +311,8 @@ function modalButton() {
 
         .then(data => {
             loadingLivros.style.display = 'flex';
-            window.location.reload();
+            console.log(data);
+            //window.location.reload();
         });
 
 }
@@ -328,7 +330,8 @@ function deleteBook() {
     })
         .then(response => response.json())
         .then(data => {
-            window.location.reload();
+            console.log(data);
+            //window.location.reload();
         });
 }
 
