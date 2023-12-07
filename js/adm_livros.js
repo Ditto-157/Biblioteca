@@ -55,7 +55,10 @@ for (let i = 0; i < keys.length; i++) {
 
 function search() {
     let link = '"';
-    for (let field of ['titulo', 'autor', 'editora', 'edicao']) {
+    for (let field of ['titulo', 'autor', 'editora']) {
+        if (document.getElementById('input_' + field).value === '-') {
+            continue;
+        }
         link += document.getElementById('input_' + field).value + (field === 'titulo' ? '" ' : ' ')
     }
     window.open(`https://www.google.com/search?q=${link.replace(' ', '+')}`, "_blank")
