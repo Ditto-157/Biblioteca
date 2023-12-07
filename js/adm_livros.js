@@ -54,9 +54,9 @@ for (let i = 0; i < keys.length; i++) {
 }
 
 function search() {
-    let link = '';
+    let link = '"';
     for (let field of ['titulo', 'autor', 'editora', 'edicao']) {
-        link += '"' + document.getElementById('input_' + field).value; + '" '
+        link += document.getElementById('input_' + field).value; + (field === 'titulo' ? '" ' : ' ')
     }
     window.open(`https://www.google.com/search?q=${link.replace(' ', '+')}`, "_blank")
 }
