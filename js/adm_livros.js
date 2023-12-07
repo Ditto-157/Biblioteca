@@ -296,6 +296,8 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
+                removeAllRows();
+                loadingLivros.style.display = 'flex';
                 window.location.reload();
             });
         return 0
@@ -309,6 +311,7 @@ function modalButton() {
         .then((response) => response.text())
 
         .then(data => {
+            removeAllRows();
             loadingLivros.style.display = 'flex';
             window.location.reload();
         });
