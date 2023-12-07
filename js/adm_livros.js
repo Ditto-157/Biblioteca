@@ -387,6 +387,7 @@ function preencherDrop(drop_id) {
             menu.appendChild(todosItem);
 
             let dataValues = data.values;
+            console.log(dataValues)
             dataValues.sort();
 
             let looked = [];
