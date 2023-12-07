@@ -216,7 +216,7 @@ function loadData() {
 
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'livros.xsls';
+            a.download = 'livros.xslx';
             document.body.appendChild(a);
             a.click();
 
