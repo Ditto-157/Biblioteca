@@ -254,7 +254,7 @@ function modalButton() {
         }
     }
 
-    formData.set('token', localStorage.get('token'));
+    formData.set('token', localStorage.getItem('token'));
 
     if (modalTitle.innerHTML.match('Editar')) {
         formData.set('book_id', window.book_id);
@@ -292,7 +292,7 @@ function deleteBook() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            token: localStorage.get('token'),
+            token: localStorage.getItem('token'),
             book_id: window.book_id
         })
     })
@@ -387,7 +387,6 @@ function preencherDrop(drop_id) {
             menu.appendChild(todosItem);
 
             let dataValues = data.values;
-            console.log(dataValues)
             dataValues.sort();
 
             let looked = [];

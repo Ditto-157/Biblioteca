@@ -16,7 +16,6 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
-    query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
         method: "POST",
         headers: {
@@ -130,7 +129,6 @@ function changeTablePage(page) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                key: 'f1563cb61eaf857ce3042c12cd94e774',
                 page: page
             })
         })
@@ -151,11 +149,7 @@ function changeTablePage(page) {
 
 function setupPagination() {
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/length", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key: 'f1563cb61eaf857ce3042c12cd94e774' })
+        method: "POST"
     })
         .then(response => response.json())
         .then(data => {
@@ -204,7 +198,6 @@ function preencherDrop(drop_id) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            key: 'f1563cb61eaf857ce3042c12cd94e774',
             field: dropField
         })
     })
