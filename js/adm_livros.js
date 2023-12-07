@@ -18,7 +18,7 @@ const fieldLabels = {
     "editora": "Editora",
     "edicao": "Edição",
     "CDD": "CDD",
-    "n": "Quantidade",
+    "quantidade": "Quantidade",
     "estante": "Estante",
     "prateleira": "Prateleira",
     "assuntos": "Assuntos",
@@ -43,7 +43,7 @@ for (let i = 0; i < keys.length; i++) {
 
     let input = document.createElement('input');
     input.setAttribute('name', keys[i])
-    if (keys[i] === 'n') {
+    if (keys[i] === 'quantidade') {
         input.setAttribute('type', 'number');
         input.setAttribute('min', '1');
         input.setAttribute('value', '1');
@@ -67,7 +67,6 @@ function search() {
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
-    query['key'] = 'f1563cb61eaf857ce3042c12cd94e774';
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
         method: "POST",
         headers: {
@@ -104,7 +103,7 @@ function newBook() {
     for (let i = 0; i < formDados.children.length; i++) {
         let child = formDados.children.item(i);
         if (child.id.match('input_')) {
-            if (child.id === 'input_n') {
+            if (child.id === 'input_quantidade') {
                 child.value = 1;
                 continue;
             }
@@ -159,11 +158,7 @@ function insertRow(id, livro) {
                     break;
                 }
                 if (item.name === key) {
-                    if (key === 'n') {
-                        item.value = livro.copies.length;
-                    } else {
-                        item.value = livro[key];
-                    }
+                    item.value = livro[key];
                     break;
                 }
             }
@@ -187,7 +182,7 @@ function insertRow(id, livro) {
     cell6.innerHTML = livro.CDD;
     cell7.innerHTML = livro.estante;
     cell8.innerHTML = livro.prateleira;
-    cell9.innerHTML = livro.copies.length;
+    cell9.innerHTML = livro.quantidade;
     cell10.innerHTML = `
     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + id + `;"> Excluir registro </button>
     `;
@@ -230,7 +225,6 @@ function changeTablePage(page) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                key: 'f1563cb61eaf857ce3042c12cd94e774',
                 page: page
             })
         })
@@ -260,7 +254,7 @@ function modalButton() {
         }
     }
 
-    formData.set('key', 'f1563cb61eaf857ce3042c12cd94e774');
+    formData.set('token', localStorage.get('token'));
 
     if (modalTitle.innerHTML.match('Editar')) {
         formData.set('book_id', window.book_id);
@@ -298,7 +292,7 @@ function deleteBook() {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            key: 'f1563cb61eaf857ce3042c12cd94e774',
+            token: localStorage.get('token'),
             book_id: window.book_id
         })
     })
@@ -310,11 +304,7 @@ function deleteBook() {
 
 function setupPagination() {
     fetch("https://apibiblioteca.2.ie-1.fl0.io/books/length", {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ key: 'f1563cb61eaf857ce3042c12cd94e774' })
+        method: "POST"
     })
         .then(response => response.json())
         .then(data => {
@@ -361,6 +351,14 @@ function preencherDrop(drop_id) {
             dropField = 'prateleira';
             all_text = 'as prateleiras';
             break;
+        case 'editoraDrop':
+            dropField = 'editora';
+            all_text = 'as editoras';
+            break;
+        case 'CDDDrop':
+            dropField = 'CDD';
+            all_text = 'os CDDS';
+            break;
         default:
             break;
     }
@@ -371,7 +369,6 @@ function preencherDrop(drop_id) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            key: 'f1563cb61eaf857ce3042c12cd94e774',
             field: dropField
         })
     })
@@ -428,5 +425,7 @@ preencherDrop('autorDrop');
 preencherDrop('assuntoDrop');
 preencherDrop('estanteDrop');
 preencherDrop('prateleiraDrop');
+preencherDrop('editoraDrop');
+preencherDrop('CDDDrop');
 //tableBody.dispatchEvent(new FocusEvent('focus'));
 
