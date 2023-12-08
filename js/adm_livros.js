@@ -11,6 +11,7 @@ var loadingLivros = document.getElementById('loading-livros');
 let changingPage = false;
 var pages = [];
 var current_page = null;
+window.queryNumber = 0;
 
 const fieldLabels = {
     "titulo": "Título",
@@ -129,10 +130,10 @@ function hideFlash() {
 
 
 function removeAllRows() {
-    window.scrollTo(0, 0);
+    window.scrollTo(-100, -100);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
-        tableBody.children.item(tableBody.children.length - i).remove();
+        tableBody.children.item(tableBody.children.length - i - 1).remove();
     }
     window.queryNumber = 0;
     for (let i = 0; i < tableBody.children.length; i++) {
