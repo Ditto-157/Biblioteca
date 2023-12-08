@@ -132,7 +132,7 @@ function removeAllRows() {
     window.scrollTo(0, 0);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
-        tableBody.children.item(tableBody.children.length - i - 1).remove();
+        tableBody.children.item(tableBody.children.length - i).remove();
     }
     window.queryNumber = 0;
     for (let i = 0; i < tableBody.children.length; i++) {
