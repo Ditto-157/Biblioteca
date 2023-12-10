@@ -16,7 +16,7 @@ pesquisarLivros.addEventListener('keydown', (event) => {
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
-    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/search", {
+    fetch("https://bibliotecamilagres.onrender.com/books/search", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -123,7 +123,7 @@ function changeTablePage(page) {
         changingPage = false;
     } else {
         loadingLivros.style.display = 'flex';
-        fetch("https://apibiblioteca.2.ie-1.fl0.io/books/page", {
+        fetch("https://bibliotecamilagres.onrender.com/books/page", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -148,7 +148,7 @@ function changeTablePage(page) {
 }
 
 function setupPagination() {
-    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/length", {
+    fetch("https://bibliotecamilagres.onrender.com/books/length", {
         method: "POST"
     })
         .then(response => response.json())
@@ -192,7 +192,7 @@ function preencherDrop(drop_id) {
             break;
     }
 
-    fetch("https://apibiblioteca.2.ie-1.fl0.io/books/field_values", {
+    fetch("https://bibliotecamilagres.onrender.com/books/field_values", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

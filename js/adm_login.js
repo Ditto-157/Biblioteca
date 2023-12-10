@@ -35,7 +35,7 @@ function checkLogin() {
         return showFlash('Preencha todos os campos!');
     }
     loading.style.display = 'flex';
-    fetch('https://apibiblioteca.2.ie-1.fl0.io/admin/login', {
+    fetch('https://bibliotecamilagres.onrender.com/admin/login', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',

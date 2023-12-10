@@ -1,4 +1,4 @@
-const url = 'https://apibiblioteca.2.ie-1.fl0.io/user'
+const url = 'https://bibliotecamilagres.onrender.com/user'
 const flash = document.getElementById('flash-message');
 const input_RG = document.getElementById('input-RG');
 const RGPattern = /^[0-9]{10}-[0-9]{1}$/;
