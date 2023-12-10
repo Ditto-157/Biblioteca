@@ -294,7 +294,7 @@ function modalButton() {
     })
 
     if (modalTitle.innerHTML.match('Editar')) {
-        fetch('https://apibiblioteca.2.ie-1.fl0.io/book/update', {
+        fetch('https://bibliotecamilagres.onrender.com/book/update', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -312,7 +312,7 @@ function modalButton() {
         return 0
     }
 
-    fetch('https://apibiblioteca.2.ie-1.fl0.io/book/new', {
+    fetch('https://bibliotecamilagres.onrender.com/book/new', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
