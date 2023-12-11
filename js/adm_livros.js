@@ -218,6 +218,7 @@ function loadData() {
 
             const a = document.createElement('a');
             a.href = url;
+            a.download = 'livros.xlsx';
             document.body.appendChild(a);
             a.click();
 
