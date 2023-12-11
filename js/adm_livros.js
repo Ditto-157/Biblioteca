@@ -79,7 +79,10 @@ function queryBook(query) {
         .then(data => {
             loadingLivros.style.display = 'none';
             if (Object.keys(data).length === 0) {
-                alert('Nenhum livro encontrado!');
+                showFlash('Nenhum livro encontrado!');
+                setTimeout(() => {
+                    hideFlash();
+                }, 10);
                 return changeTablePage(1);
             }
             let keys = Object.keys(query);
