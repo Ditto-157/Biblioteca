@@ -134,7 +134,7 @@ function removeAllRows() {
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
         let item = tableBody.children.item(tableBody.children.length - i - 1);
-        if (item === undefined) {
+        if (item !== undefined) {
             item.remove();
         }
     }
