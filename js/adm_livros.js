@@ -133,7 +133,10 @@ function removeAllRows() {
     window.scrollTo(-100, -100);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
-        tableBody.children.item(tableBody.children.length - i - 1).remove();
+        let item = tableBody.children.item(tableBody.children.length - i - 1);
+        if (item === undefined) {
+            item.remove();
+        }
     }
     window.queryNumber = 0;
     for (let i = 0; i < tableBody.children.length; i++) {
