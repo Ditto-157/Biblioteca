@@ -36,8 +36,6 @@ function checkIfAdminIsLogged() {
             } else {
                 container.classList.remove('invisible');
                 loading.style.display = "none";
-                console.log((new Date()).toISOString());
-                localStorage.setItem('tokenCheckDate', (new Date()).toISOString())
             }
         });
     }
