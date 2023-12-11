@@ -23,7 +23,6 @@ function checkIfAdminIsLogged() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                key: 'f1563cb61eaf857ce3042c12cd94e774',
                 token: localStorage.getItem('token')
             })
         })
@@ -37,6 +36,7 @@ function checkIfAdminIsLogged() {
             } else {
                 container.classList.remove('invisible');
                 loading.style.display = "none";
+                console.log((new Date()).toISOString());
                 localStorage.setItem('tokenCheckDate', (new Date()).toISOString())
             }
         });
