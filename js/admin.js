@@ -17,7 +17,7 @@ function checkIfAdminIsLogged() {
             loading.style.display = "none";
             return 0;
         }
-        fetch('https://bibliotecamilagres.onrender.com/admin/check', {
+        fetch('https://bibliotecamilagres-503s.onrender.com/admin/check', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
