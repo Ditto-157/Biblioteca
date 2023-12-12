@@ -13,7 +13,7 @@ function checkIfAdminIsLogged() {
     } else {
         let today = new Date();
         let tokenDate = new Date(localStorage.getItem('tokenCheckDate'));
-        console.log(today.getTime(), tokenDate.getTime())
+        console.log(today.getTime(), tokenDate.getTime(), today.getTime() <= tokenDate.getTime())
 
         if (today.getTime() <= tokenDate.getTime()) {
             container.classList.remove('invisible');
