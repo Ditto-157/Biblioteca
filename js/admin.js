@@ -14,7 +14,7 @@ function checkIfAdminIsLogged() {
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
     } else {
         let today = new Date();
-        if (today.getDate().getTime() <= (new Date(localStorage.getItem('tokenCheckDate'))).getDate().getTime()) {
+        if (today.getTime() <= (new Date(localStorage.getItem('tokenCheckDate'))).getTime()) {
             container.classList.remove('invisible');
             loading.style.display = "none";
             return 0;
