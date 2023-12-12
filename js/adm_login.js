@@ -56,7 +56,6 @@ function checkLogin() {
         }
         localStorage.clear();
         localStorage.setItem('token', data.token);
-        localStorage.setItem('tokenCheckDate', (new Date()).toISOString())
         let newUrl = window.location.href.replace('/login', '/');
         window.location.replace(newUrl);
     });
