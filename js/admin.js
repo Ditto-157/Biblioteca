@@ -11,6 +11,12 @@ function checkIfAdminIsLogged() {
         lastPart = lastPart[lastPart.length - 1];
         window.location.replace(window.location.href.replace(lastPart, 'admin/login'))
     } else {
+        let today = new Date();
+        if (today.getDate() === (new Date(localStorage.getItem('tokenCheckDate'))).getDate()) {
+            container.classList.remove('invisible');
+            loading.style.display = "none";
+            return 0;
+        }
         fetch('https://bibliotecamilagres-503s.onrender.com/admin/check', {
             method: "POST",
             headers: {
@@ -32,7 +38,6 @@ function checkIfAdminIsLogged() {
                 loading.style.display = "none";
             }
         });
-        
     }
 }
 checkIfAdminIsLogged();
