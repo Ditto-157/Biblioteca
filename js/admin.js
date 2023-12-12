@@ -6,6 +6,8 @@ container.classList.add('invisible')
 loading.style.display = "flex";
 
 function checkIfAdminIsLogged() {
+    console.log(!localStorage.getItem('token'))
+    console.log(!localStorage.getItem('tokenCheckDate'))
     if (!localStorage.getItem('token')) {
         let lastPart = window.location.href.split('/');
         lastPart = lastPart[lastPart.length - 1];
