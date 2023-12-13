@@ -2,6 +2,11 @@ body {
     overflow-x: hidden;
 }
 
+#font-face{
+    font-family: 'Butler';
+    src: url('Butler_Black.otf') format(opentype);
+}
+
 header {
     background-color: #003366;
 }
