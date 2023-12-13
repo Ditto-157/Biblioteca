@@ -158,7 +158,7 @@ function setupPagination() {
             var pagination = document.getElementById("pagination");
             pagination.innerHTML = "";
 
-            for (var i = 1; i <= 100; i++) {
+            for (var i = 1; i <= totalPages; i++) {
                 var li = document.createElement("li");
                 var a = document.createElement("a");
                 li.classList.add("page-item");
