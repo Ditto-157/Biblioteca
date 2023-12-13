@@ -55,6 +55,10 @@ footer {
         width: 80vw;
         height: 20vh;
     }
+
+    .ti{
+        font-size: 10px;
+    }
 }
 
 #loading-livros {
