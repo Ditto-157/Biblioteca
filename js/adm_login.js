@@ -4,7 +4,9 @@ const flash = document.getElementById('flash-message');
 const showButton = document.getElementById('show_password');
 const footer = document.getElementById('footer');
 
-footer.style.position = 'absolute'
+if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight + footer.scrollHeight) {
+    footer.style.position = 'relative';
+};
 
 var loading = document.getElementById('loading-livros');
 
