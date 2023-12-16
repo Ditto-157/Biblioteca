@@ -4,10 +4,6 @@ const flash = document.getElementById('flash-message');
 const showButton = document.getElementById('show_password');
 const footer = document.getElementById('footer');
 
-if (footer.style.position === 'absolute' && window.innerHeight < document.body.scrollHeight + footer.scrollHeight) {
-    footer.style.position = 'relative';
-};
-
 var loading = document.getElementById('loading-livros');
 
 document.addEventListener('keydown', (event) => {
