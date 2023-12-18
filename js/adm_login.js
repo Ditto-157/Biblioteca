@@ -4,6 +4,8 @@ const flash = document.getElementById('flash-message');
 const showButton = document.getElementById('show_password');
 const footer = document.getElementById('footer');
 
+footer.style.position = 'absolute'
+
 var loading = document.getElementById('loading-livros');
 
 document.addEventListener('keydown', (event) => {
