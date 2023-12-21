@@ -206,7 +206,7 @@ function searchByTitle() {
 
 function loadData() {
     loadingLivros.style.display = 'flex';
-    fetch("https://bibliotecamilagres-503s.onrender.com/POST/data", {
+    fetch("https://bibliotecamilagres-503s.onrender.com/data", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
