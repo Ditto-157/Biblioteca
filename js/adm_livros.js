@@ -298,7 +298,7 @@ function modalButton() {
 
     if (modalTitle.innerHTML.match('Editar')) {
         fetch('https://bibliotecamilagres-503s.onrender.com/book/update', {
-            method: "PUT",
+            method: "POST",
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -335,7 +335,7 @@ function modalButton() {
 
 function deleteBook() {
     fetch("https://bibliotecamilagres-503s.onrender.com/book/delete", {
-        method: "DELETE",
+        method: "POST",
         headers: {
             'Content-Type': 'application/json',
         },
