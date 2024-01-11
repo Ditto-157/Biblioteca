@@ -263,10 +263,9 @@ function changeTablePage(page) {
         })
             .then((response) => response.json())
             .then(data => {
-                let ids = Object.keys(data);
                 let livros = Object.values(data);
                 for (let i = 0; i < livros.length; i++) {
-                    insertRow(ids[i], livros[i]);
+                    insertRow(livros[i]);
                 }
                 pages.push(page);
                 changingPage = false;
