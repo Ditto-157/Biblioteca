@@ -291,7 +291,7 @@ function modalButton() {
     var data = {};
 
     formData.forEach((value, key) => {
-        data[key] = value;
+        data[key] = value.trim();
     })
 
     if (modalTitle.innerHTML.match('Editar')) {
