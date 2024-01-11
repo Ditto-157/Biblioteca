@@ -13,6 +13,32 @@ var pages = [];
 var current_page = null;
 window.queryNumber = 0;
 
+fetch('https://bibliotecamilagres-503s.onrender.com/books/search', {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({'estante': 'Branca'})
+})
+
+    .then((response) => response.json())
+
+    .then(data => {
+        for (let livro of data) {
+            fetch('https://bibliotecamilagres-503s.onrender.com/book/update', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({'book_id': livro.id, 'estante': 'Branca'})
+            })
+            .then((response) => response.json())
+            .then((data => {console.log(livro.id)}))
+        }
+    });
+
+
+
 const fieldLabels = {
     "titulo": "Título",
     "autor": "Autor",
