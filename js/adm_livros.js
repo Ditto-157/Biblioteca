@@ -18,7 +18,7 @@ const fieldLabels = {
     "autor": "Autor",
     "editora": "Editora",
     "edicao": "Edição",
-    "CDD": "CDD",
+    "cdd": "cdd",
     "quantidade": "Quantidade",
     "estante": "Estante",
     "prateleira": "Prateleira",
@@ -183,7 +183,7 @@ function insertRow(id, livro) {
     cell3.innerHTML = livro.editora;
     cell4.innerHTML = livro.edicao;
     cell5.innerHTML = livro.assuntos;
-    cell6.innerHTML = livro.CDD;
+    cell6.innerHTML = livro.cdd;
     cell7.innerHTML = livro.estante;
     cell8.innerHTML = livro.prateleira;
     cell9.innerHTML = livro.quantidade;
@@ -403,9 +403,9 @@ function preencherDrop(drop_id) {
             dropField = 'editora';
             all_text = 'as editoras';
             break;
-        case 'CDDDrop':
-            dropField = 'CDD';
-            all_text = 'os CDDS';
+        case 'cddDrop':
+            dropField = 'cdd';
+            all_text = 'os cddS';
             break;
         default:
             break;
@@ -474,6 +474,6 @@ preencherDrop('assuntoDrop');
 preencherDrop('estanteDrop');
 preencherDrop('prateleiraDrop');
 preencherDrop('editoraDrop');
-preencherDrop('CDDDrop');
+preencherDrop('cddDrop');
 //tableBody.dispatchEvent(new FocusEvent('focus'));
 
