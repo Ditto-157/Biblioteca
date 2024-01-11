@@ -153,7 +153,7 @@ function insertRow(livro) {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
         modalSearch.style.display = 'flex';
-        window.book_id = livro.id;
+        window.book_id = livro.id.toString();
         for (let i = 0; i < formDados.children.length; i++) {
             item = formDados.children.item(i);
             for (let key of Object.keys(fieldLabels)) {
@@ -187,7 +187,7 @@ function insertRow(livro) {
     cell8.innerHTML = livro.prateleira;
     cell9.innerHTML = livro.quantidade;
     cell10.innerHTML = `
-    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + livro.id + `;"> Excluir registro </button>
+    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + livro.id.toString() + `;"> Excluir registro </button>
     `;
 }
 
