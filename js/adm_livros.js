@@ -83,7 +83,6 @@ function queryBook(query) {
                 return changeTablePage(1);
             }
             let keys = Object.keys(query);
-            let ids = Object.keys(data);
             let livros = Object.values(data).sort((book) => {
 
                 let search = query[keys[0]].toLowerCase();
@@ -91,7 +90,7 @@ function queryBook(query) {
                 return bookValue === search ? -1 : 1;
             });
             for (let i = 0; i < livros.length; i++) {
-                insertRow(ids[i], livros[i]);
+                insertRow(livros[i]);
             }
             window.queryNumber = livros.length;
             foooterAbsolute();
@@ -145,7 +144,7 @@ function removeAllRows() {
     };
 }
 
-function insertRow(id, livro) {
+function insertRow(livro) {
     foooterAbsolute();
     var row = tableBody.insertRow();
     row.setAttribute('data-bs-toggle', 'modal');
@@ -154,7 +153,7 @@ function insertRow(id, livro) {
         event.preventDefault();
         modalTitle.innerHTML = 'Editar livro';
         modalSearch.style.display = 'flex';
-        window.book_id = id;
+        window.book_id = livro.id;
         for (let i = 0; i < formDados.children.length; i++) {
             item = formDados.children.item(i);
             for (let key of Object.keys(fieldLabels)) {
