@@ -187,7 +187,7 @@ function insertRow(livro) {
     cell8.innerHTML = livro.prateleira;
     cell9.innerHTML = livro.quantidade;
     cell10.innerHTML = `
-    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + id + `;"> Excluir registro </button>
+    <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + livro.id + `;"> Excluir registro </button>
     `;
 }
 
