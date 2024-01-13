@@ -68,7 +68,7 @@ function search() {
 function queryBook(query) {
     loadingLivros.style.display = 'flex';
     removeAllRows();
-    fetch("https://bibliotecamilagres-503s.onrender.com/books/search", {
+    fetch("https://bibliotecamilagres-xll1.onrender.com/books/search", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ function searchByTitle() {
 
 function loadData() {
     loadingLivros.style.display = 'flex';
-    fetch("https://bibliotecamilagres-503s.onrender.com/get/data", {
+    fetch("https://bibliotecamilagres-xll1.onrender.com/get/data", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -252,7 +252,7 @@ function changeTablePage(page) {
         foooterAbsolute();
     } else {
         loadingLivros.style.display = 'flex';
-        fetch("https://bibliotecamilagres-503s.onrender.com/books/page", {
+        fetch("https://bibliotecamilagres-xll1.onrender.com/books/page", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -295,7 +295,7 @@ function modalButton() {
     })
 
     if (modalTitle.innerHTML.match('Editar')) {
-        fetch('https://bibliotecamilagres-503s.onrender.com/book/update', {
+        fetch('https://bibliotecamilagres-xll1.onrender.com/book/update', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
@@ -313,7 +313,7 @@ function modalButton() {
         return 0
     }
 
-    fetch('https://bibliotecamilagres-503s.onrender.com/book/new', {
+    fetch('https://bibliotecamilagres-xll1.onrender.com/book/new', {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -332,7 +332,7 @@ function modalButton() {
 }
 
 function deleteBook() {
-    fetch("https://bibliotecamilagres-503s.onrender.com/book/delete", {
+    fetch("https://bibliotecamilagres-xll1.onrender.com/book/delete", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -349,7 +349,7 @@ function deleteBook() {
 }
 
 function setupPagination() {
-    fetch("https://bibliotecamilagres-503s.onrender.com/books/length", {
+    fetch("https://bibliotecamilagres-xll1.onrender.com/books/length", {
         method: "POST"
     })
         .then(response => response.json())
@@ -409,7 +409,7 @@ function preencherDrop(drop_id) {
             break;
     }
 
-    fetch("https://bibliotecamilagres-503s.onrender.com/books/field_values", {
+    fetch("https://bibliotecamilagres-xll1.onrender.com/books/field_values", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json',
