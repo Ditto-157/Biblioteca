@@ -152,7 +152,7 @@ function setupPagination() {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
-        },
+        }
     })
         .then(response => response.json())
         .then(data => {
