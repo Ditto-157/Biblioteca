@@ -122,7 +122,6 @@ function changeTablePage(page) {
         loadingLivros.style.display = 'flex';
         fetch("https://bibliotecamilagres-xll1.onrender.com/books/page", {
             method: "POST",
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json'
             },
