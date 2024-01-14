@@ -18,6 +18,7 @@ function queryBook(query) {
     removeAllRows();
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/search", {
         method: "POST",
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -125,6 +126,7 @@ function changeTablePage(page) {
         loadingLivros.style.display = 'flex';
         fetch("https://bibliotecamilagres-xll1.onrender.com/books/page", {
             method: "POST",
+            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -150,6 +152,7 @@ function changeTablePage(page) {
 function setupPagination() {
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/length", {
         method: "POST",
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         }
@@ -197,6 +200,7 @@ function preencherDrop(drop_id) {
 
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/field_values", {
         method: "POST",
+        mode: 'no-cors',
         headers: {
             'Content-Type': 'application/json',
         },
