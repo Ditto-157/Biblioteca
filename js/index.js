@@ -20,7 +20,7 @@ function queryBook(query) {
         method: "POST",
         mode: 'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(query)
     })
@@ -128,7 +128,7 @@ function changeTablePage(page) {
             method: "POST",
             mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 page: page
@@ -154,7 +154,7 @@ function setupPagination() {
         method: "POST",
         mode: 'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         }
     })
         .then(response => response.json())
@@ -202,7 +202,7 @@ function preencherDrop(drop_id) {
         method: "POST",
         mode: 'no-cors',
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             field: dropField
