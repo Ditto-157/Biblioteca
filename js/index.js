@@ -131,7 +131,7 @@ function changeTablePage(page) {
             },
             mode: 'no-cors',
             body: JSON.stringify({
-                page: page
+                "page": page
             })
         })
             .then((response) => response.json())
@@ -205,7 +205,7 @@ function preencherDrop(drop_id) {
         },
         mode: 'no-cors',
         body: JSON.stringify({
-            field: dropField
+            "field": dropField
         })
     })
         .then(response => response.json())
