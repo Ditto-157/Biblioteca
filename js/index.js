@@ -149,7 +149,10 @@ function changeTablePage(page) {
 
 function setupPagination() {
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/length", {
-        method: "POST"
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        }
     })
         .then(response => response.json())
         .then(data => {
