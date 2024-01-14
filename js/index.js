@@ -18,6 +18,9 @@ function queryBook(query) {
     removeAllRows();
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/search", {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(query)
     })
         .then((response) => response.json())
@@ -122,6 +125,9 @@ function changeTablePage(page) {
         loadingLivros.style.display = 'flex';
         fetch("https://bibliotecamilagres-xll1.onrender.com/books/page", {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify({
                 page: page
             })
@@ -144,6 +150,9 @@ function changeTablePage(page) {
 function setupPagination() {
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/length", {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        }
     })
         .then(response => response.json())
         .then(data => {
@@ -188,6 +197,9 @@ function preencherDrop(drop_id) {
 
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/field_values", {
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             field: dropField
         })
