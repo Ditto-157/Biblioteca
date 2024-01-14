@@ -18,10 +18,6 @@ function queryBook(query) {
     removeAllRows();
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/search", {
         method: "POST",
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(query)
     })
         .then((response) => response.json())
@@ -200,10 +196,6 @@ function preencherDrop(drop_id) {
 
     fetch("https://bibliotecamilagres-xll1.onrender.com/books/field_values", {
         method: "POST",
-        mode: 'no-cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify({
             field: dropField
         })
