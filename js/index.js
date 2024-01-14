@@ -21,7 +21,6 @@ function queryBook(query) {
         headers: {
             'Content-Type': 'application/json'
         },
-        mode: 'no-cors',
         body: JSON.stringify(query)
     })
         .then((response) => response.json())
@@ -129,9 +128,8 @@ function changeTablePage(page) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            mode: 'no-cors',
             body: JSON.stringify({
-                "page": page
+                page: page
             })
         })
             .then((response) => response.json())
@@ -155,7 +153,6 @@ function setupPagination() {
         headers: {
             'Content-Type': 'application/json'
         },
-        mode: 'no-cors'
     })
         .then(response => response.json())
         .then(data => {
@@ -203,9 +200,8 @@ function preencherDrop(drop_id) {
         headers: {
             'Content-Type': 'application/json'
         },
-        mode: 'no-cors',
         body: JSON.stringify({
-            "field": dropField
+            field: dropField
         })
     })
         .then(response => response.json())
