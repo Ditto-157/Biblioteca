@@ -147,6 +147,7 @@ function removeAllRows() {
 function insertRow(livro) {
     foooterAbsolute();
     var row = tableBody.insertRow();
+    row.setAttribute('id', livro.id.toString());
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
     row.addEventListener('click', (event) => {
@@ -344,7 +345,7 @@ function deleteBook() {
     })
         .then(response => response.json())
         .then(data => {
-            window.location.reload();
+            document.getElementById(window.book_id.toString()).remove()
         });
 }
 
