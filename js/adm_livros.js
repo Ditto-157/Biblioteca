@@ -91,7 +91,7 @@ function queryBook(query) {
                 return bookValue === search ? -1 : 1;
             });
             for (let i = 0; i < livros.length; i++) {
-                insertRow(livros[i]);
+                insertRow(livros[i], true);
             }
             window.queryNumber = livros.length;
             foooterAbsolute();
