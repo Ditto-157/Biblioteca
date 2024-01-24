@@ -179,21 +179,11 @@ function insertRow(livro, search=false) {
         modalTitle.innerHTML = 'Editar livro';
         modalSearch.style.display = 'flex';
         window.book_id = livro.id.toString();
+        let keys = Object.keys(livro);
         let row = document.getElementById(prelude + livro.id.toString());
-        let row_items = 0;
-        console.log(row.children)
-        for (let i = 0; i < formDados.children.length; i++) {
-            item = formDados.children.item(i);
-            for (let key of Object.keys(fieldLabels)) {
-                if (!item.name) {
-                    break;
-                }
-                if (item.name === key) {
-                    item.value = row.children.item(i).innerHTML;
-                    row_items += 1;
-                    break;
-                }
-            }
+        for (let i = 0; i < keys.length; i++) {
+            let item = formDados.getElementById('input_' + keys[i]);
+            item.value = row.children.item(i).innerHTML;
         }
     });
 }
