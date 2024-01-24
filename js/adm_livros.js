@@ -157,14 +157,15 @@ function insertRow(livro, search=false) {
         modalTitle.innerHTML = 'Editar livro';
         modalSearch.style.display = 'flex';
         window.book_id = livro.id.toString();
-        for (let i = 0; i < formDados.children.length; i++) {
+        let row = document.getElementById(prelude + livro.id.toString());
+        for (let i = 0; i < row.children.length; i++) {
             item = formDados.children.item(i);
             for (let key of Object.keys(fieldLabels)) {
                 if (!item.name) {
                     break;
                 }
                 if (item.name === key) {
-                    item.value = livro[key];
+                    item.value = row.children.item(i).innerHTML;
                     break;
                 }
             }
