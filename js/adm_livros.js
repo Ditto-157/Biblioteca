@@ -282,7 +282,6 @@ function modalButton() {
         }
     }
     formData.set('token', localStorage.getItem('token'));
-    formData.set('book_id', window.book_id);
 
     var data = {};
 
@@ -291,6 +290,7 @@ function modalButton() {
     })
 
     if (modalTitle.innerHTML.match('Editar')) {
+        formData.set('book_id', window.book_id);
         fetch('https://bibliotecamilagres-xll1.onrender.com/book/update', {
             method: "POST",
             headers: {
@@ -333,6 +333,7 @@ function modalButton() {
 
         .then(data => {
             removeAllRows();
+            alert(data);
             loadingLivros.style.display = 'flex';
             sessionStorage.setItem('new', '1');
             window.location.reload();
