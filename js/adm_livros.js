@@ -314,6 +314,9 @@ function modalButton() {
                     document.getElementById("search-" + data['book_id']),
                 ]
                 for (let row of rows) {
+                    if (row === null) {
+                        continue;
+                    }
                     row.innerHTML = "";
                     for (let value of data) {
                         cell = row.insertCell();
