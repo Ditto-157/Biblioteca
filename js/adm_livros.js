@@ -332,9 +332,10 @@ function modalButton() {
 
         .then((response) => response.text())
 
-        .then(response => {
-            data['id'] = data['book_id'];
-            insertRow(data);
+        .then(data => {
+            removeAllRows();
+            loadingLivros.style.display = 'flex';
+            window.location.reload();
         });
 
 }
