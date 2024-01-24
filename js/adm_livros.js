@@ -331,9 +331,10 @@ function modalButton() {
 
         .then((response) => response.text())
 
-        .then(data => {
+        .then(message => {
+            console.log(data);
+            alert(message);
             removeAllRows();
-            alert(data);
             loadingLivros.style.display = 'flex';
             sessionStorage.setItem('new', '1');
             window.location.reload();
