@@ -161,7 +161,6 @@ function insertRow(livro, search=false) {
         for (let i = 0; i < row.children.length; i++) {
             item = formDados.children.item(i);
             item.value = row.children.item(i).innerHTML;
-            }
         }
     });
     var cell1 = row.insertCell(0);
