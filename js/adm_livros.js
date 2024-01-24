@@ -314,13 +314,14 @@ function modalButton() {
                     document.getElementById(data['book_id']),
                     document.getElementById("search-" + data['book_id']),
                 ]
+                console.log(data);
 
                 let values = Object.values(data);
                 for (let row of rows) {
                     if (row === null) {
                         continue;
                     }
-                    for (let i = 0; i < values.length; i++) {
+                    for (let i = 0; i < children.length; i++) {
                         row.children.item(i).innerHTML = values[i];
                     }
                 }
