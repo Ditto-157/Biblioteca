@@ -308,11 +308,13 @@ function modalButton() {
 
             .then((response) => response.text())
 
-            .then(data => {
+            .then(response => {
+                console.log(data);
                 let rows = [
                     document.getElementById(data['book_id']),
                     document.getElementById("search-" + data['book_id']),
                 ]
+                console.log(rows);
                 for (let row of rows) {
                     if (row === null) {
                         continue;
