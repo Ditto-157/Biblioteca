@@ -309,20 +309,19 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(response => {
-                console.log(data);
+
                 let rows = [
                     document.getElementById(data['book_id']),
                     document.getElementById("search-" + data['book_id']),
                 ]
-                console.log(rows);
+
+                let values = Object.values(data);
                 for (let row of rows) {
                     if (row === null) {
                         continue;
                     }
-                    row.innerHTML = "";
-                    for (let value of data) {
-                        cell = row.insertCell();
-                        cell.innerHTML = data[value];
+                    for (let i = 0; i < len(values); i++) {
+                        row.children.item(i).innerHTML = values[i];
                     }
                 }
             });
