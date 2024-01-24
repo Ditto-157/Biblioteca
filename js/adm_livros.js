@@ -182,8 +182,8 @@ function insertRow(livro, search=false) {
         let keys = Object.keys(livro);
         let row = document.getElementById(prelude + livro.id.toString());
         for (let i = 0; i < keys.length; i++) {
-            let item = formDados.getElementById('input_' + keys[i]);
-            item.value = row.children.item(i).innerHTML;
+            let field = document.getElementById('input_' + keys[i]);
+            field.value = row.children.item(i).innerHTML;
         }
     });
 }
