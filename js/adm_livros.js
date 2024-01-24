@@ -56,7 +56,6 @@ for (let i = 0; i < keys.length; i++) {
 }
 
 function search() {
-    hideFlash();
     let link = '"';
     for (let field of ['titulo', 'autor', 'editora']) {
         if (document.getElementById('input_' + field).value === '-') {
@@ -81,7 +80,7 @@ function queryBook(query) {
         .then(data => {
             loadingLivros.style.display = 'none';
             if (Object.keys(data).length === 0) {
-                showFlash('Nenhum livro encontrado!');
+                alert('Nenhum livro encontrado!');
                 return changeTablePage(1);
             }
             let keys = Object.keys(query);
@@ -130,7 +129,6 @@ function hideFlash() {
 
 
 function removeAllRows() {
-    hideFlash();
     window.scrollTo(-100, -100);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
@@ -485,7 +483,7 @@ preencherDrop('editoraDrop');
 preencherDrop('cddDrop');
 
 if (sessionStorage.getItem('new') === "1") {
-    showFlash('Livro criado com sucesso!')
+    alert('Livro criado com sucesso!')
     sessionStorage.removeItem('new');
 }
 
