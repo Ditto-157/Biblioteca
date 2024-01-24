@@ -152,27 +152,6 @@ function insertRow(livro, search=false) {
     row.setAttribute('id', prelude + livro.id.toString());
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
-    row.addEventListener('click', (event) => {
-        event.preventDefault();
-        modalTitle.innerHTML = 'Editar livro';
-        modalSearch.style.display = 'flex';
-        window.book_id = livro.id.toString();
-        let row = document.getElementById(prelude + livro.id.toString());
-        let row_items = 0;
-        for (let i = 0; i < formDados.children.length; i++) {
-            item = formDados.children.item(i);
-            for (let key of Object.keys(fieldLabels)) {
-                if (!item.name) {
-                    break;
-                }
-                if (item.name === key) {
-                    item.value = row.children.item(i).innerHTML;
-                    row_items += 1;
-                    break;
-                }
-            }
-        }
-    });
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
@@ -195,6 +174,28 @@ function insertRow(livro, search=false) {
     cell10.innerHTML = `
     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + livro.id.toString() + `;"> Excluir registro </button>
     `;
+    row.addEventListener('click', (event) => {
+        event.preventDefault();
+        modalTitle.innerHTML = 'Editar livro';
+        modalSearch.style.display = 'flex';
+        window.book_id = livro.id.toString();
+        let row = document.getElementById(prelude + livro.id.toString());
+        let row_items = 0;
+        console.log(row.children)
+        for (let i = 0; i < formDados.children.length; i++) {
+            item = formDados.children.item(i);
+            for (let key of Object.keys(fieldLabels)) {
+                if (!item.name) {
+                    break;
+                }
+                if (item.name === key) {
+                    item.value = row.children.item(i).innerHTML;
+                    row_items += 1;
+                    break;
+                }
+            }
+        }
+    });
 }
 
 function searchByTitle() {
