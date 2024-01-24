@@ -158,9 +158,19 @@ function insertRow(livro, search=false) {
         modalSearch.style.display = 'flex';
         window.book_id = livro.id.toString();
         let row = document.getElementById(prelude + livro.id.toString());
-        for (let i = 0; i < row.children.length; i++) {
+        let row_items = 0;
+        for (let i = 0; i < formDados.children.length; i++) {
             item = formDados.children.item(i);
-            item.value = row.children.item(i).innerHTML;
+            for (let key of Object.keys(fieldLabels)) {
+                if (!item.name) {
+                    break;
+                }
+                if (item.name === key) {
+                    item.value = row.children.item(i).innerHTML;
+                    row_items += 1;
+                    break;
+                }
+            }
         }
     });
     var cell1 = row.insertCell(0);
