@@ -25,6 +25,8 @@ const fieldLabels = {
     "assuntos": "Assuntos",
 }
 
+
+
 pesquisarLivros.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         searchByTitle();
@@ -182,11 +184,11 @@ function insertRow(livro) {
     cell2.innerHTML = livro.autor;
     cell3.innerHTML = livro.editora;
     cell4.innerHTML = livro.edicao;
-    cell5.innerHTML = livro.assuntos;
-    cell6.innerHTML = livro.cdd;
+    cell5.innerHTML = livro.cdd;
+    cell6.innerHTML = livro.quantidade;
     cell7.innerHTML = livro.estante;
     cell8.innerHTML = livro.prateleira;
-    cell9.innerHTML = livro.quantidade;
+    cell9.innerHTML = livro.assuntos;
     cell10.innerHTML = `
     <button class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#modalExcluir' onclick="modalExcluir.book_id = ` + livro.id.toString() + `;"> Excluir registro </button>
     `;
@@ -307,9 +309,13 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                removeAllRows();
-                loadingLivros.style.display = 'flex';
-                window.location.reload();
+                let row = document.getElementById(data['book_id']);
+                row.innerHTML = "";
+                let counter = 0;
+                for (let value in data) {
+                    cell = row.insertCell();
+                    cell.innerHTML = data[value];
+                }
             });
         return 0
     }
