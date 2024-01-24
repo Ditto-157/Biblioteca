@@ -308,7 +308,6 @@ function modalButton() {
                     document.getElementById(data['book_id']),
                     document.getElementById("search-" + data['book_id']),
                 ]
-                console.log(data);
 
                 let values = Object.values(data);
                 for (let row of rows) {
@@ -333,10 +332,9 @@ function modalButton() {
 
         .then((response) => response.text())
 
-        .then(data => {
-            removeAllRows();
-            loadingLivros.style.display = 'flex';
-            window.location.reload();
+        .then(response => {
+            data['id'] = data['book_id'];
+            insertRow(data);
         });
 
 }
