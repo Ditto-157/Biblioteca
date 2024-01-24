@@ -320,7 +320,7 @@ function modalButton() {
                     if (row === null) {
                         continue;
                     }
-                    for (let i = 0; i < len(values); i++) {
+                    for (let i = 0; i < values.length; i++) {
                         row.children.item(i).innerHTML = values[i];
                     }
                 }
