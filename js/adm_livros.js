@@ -232,7 +232,6 @@ function loadData() {
 }
 
 function changeTablePage(page) {
-    hideFlash();
     if (changingPage) {
         return false;
     }
