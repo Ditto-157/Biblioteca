@@ -86,7 +86,6 @@ function queryBook(query) {
             }
             let keys = Object.keys(query);
             let livros = Object.values(data).sort((book) => {
-
                 let search = query[keys[0]].toLowerCase();
                 let bookValue = book[keys[0]].toLowerCase();
                 return bookValue === search ? -1 : 1;
@@ -309,12 +308,12 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                let row = document.getElementById(data['book_id']);
-                row.innerHTML = "";
-                let counter = 0;
-                for (let value in data) {
-                    cell = row.insertCell();
-                    cell.innerHTML = data[value];
+                for (let row of document.getElementsById(data['book_id'])) {
+                    row.innerHTML = "";
+                    for (let value of data) {
+                        cell = row.insertCell();
+                        cell.innerHTML = data[value];
+                    }
                 }
             });
         return 0
