@@ -145,10 +145,11 @@ function removeAllRows() {
     };
 }
 
-function insertRow(livro) {
+function insertRow(livro, search=false) {
     foooterAbsolute();
     var row = tableBody.insertRow();
-    row.setAttribute('id', livro.id.toString());
+    let prelude = search ? "search-" : "";
+    row.setAttribute('id', prelude + livro.id.toString());
     row.setAttribute('data-bs-toggle', 'modal');
     row.setAttribute('data-bs-target', '#modalId');
     row.addEventListener('click', (event) => {
@@ -308,7 +309,11 @@ function modalButton() {
             .then((response) => response.text())
 
             .then(data => {
-                for (let row of document.getElementsById(data['book_id'])) {
+                let rows = [
+                    document.getElementsById(data['book_id']),
+                    document.getElementsById("search-" + data['book_id']),
+                ]
+                for (let row of rows) {
                     row.innerHTML = "";
                     for (let value of data) {
                         cell = row.insertCell();
