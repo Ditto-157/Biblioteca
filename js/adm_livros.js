@@ -26,7 +26,6 @@ const fieldLabels = {
 }
 
 
-
 pesquisarLivros.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         searchByTitle();
@@ -57,6 +56,7 @@ for (let i = 0; i < keys.length; i++) {
 }
 
 function search() {
+    hideFlash();
     let link = '"';
     for (let field of ['titulo', 'autor', 'editora']) {
         if (document.getElementById('input_' + field).value === '-') {
@@ -81,7 +81,7 @@ function queryBook(query) {
         .then(data => {
             loadingLivros.style.display = 'none';
             if (Object.keys(data).length === 0) {
-                alert('Nenhum livro encontrado!');
+                showFlash('Nenhum livro encontrado!');
                 return changeTablePage(1);
             }
             let keys = Object.keys(query);
@@ -130,6 +130,7 @@ function hideFlash() {
 
 
 function removeAllRows() {
+    hideFlash();
     window.scrollTo(-100, -100);
     footer.style.position = 'absolute';
     for (let i = 0; i < window.queryNumber; i++) {
@@ -231,6 +232,7 @@ function loadData() {
 }
 
 function changeTablePage(page) {
+    hideFlash();
     if (changingPage) {
         return false;
     }
@@ -335,6 +337,7 @@ function modalButton() {
         .then(data => {
             removeAllRows();
             loadingLivros.style.display = 'flex';
+            sessionStorage.setItem('new', '1');
             window.location.reload();
         });
 
@@ -481,5 +484,9 @@ preencherDrop('estanteDrop');
 preencherDrop('prateleiraDrop');
 preencherDrop('editoraDrop');
 preencherDrop('cddDrop');
-//tableBody.dispatchEvent(new FocusEvent('focus'));
+
+if (sessionStorage.getItem('new') === "1") {
+    showFlash('Livro criado com sucesso!')
+    sessionStorage.removeItem('new');
+}
 
