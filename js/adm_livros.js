@@ -310,8 +310,8 @@ function modalButton() {
 
             .then(data => {
                 let rows = [
-                    document.getElementsById(data['book_id']),
-                    document.getElementsById("search-" + data['book_id']),
+                    document.getElementById(data['book_id']),
+                    document.getElementById("search-" + data['book_id']),
                 ]
                 for (let row of rows) {
                     row.innerHTML = "";
