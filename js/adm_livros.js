@@ -332,8 +332,6 @@ function modalButton() {
         .then((response) => response.text())
 
         .then(message => {
-            console.log(data);
-            alert(message);
             removeAllRows();
             loadingLivros.style.display = 'flex';
             sessionStorage.setItem('new', '1');
@@ -350,12 +348,12 @@ function deleteBook() {
         },
         body: JSON.stringify({
             token: localStorage.getItem('token'),
-            book_id: window.book_id
+            book_id: modalExcluir.book_id
         })
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById(window.book_id.toString()).remove()
+            document.getElementById(modalExcluir.book_id.toString()).remove()
         });
 }
 
