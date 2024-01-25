@@ -353,8 +353,17 @@ function deleteBook() {
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById('search-' + modalExcluir.book_id.toString()).remove()
-            document.getElementById(modalExcluir.book_id.toString()).remove()
+            let id = modalExcluir.book_id.toString();
+            let rows = [
+                document.getElementById('search-' + id),
+                document.getElementById(id)
+            ]
+            for (let row of rows) {
+                if (row === null) {
+                    continue;
+                }
+                row.remove();
+            }
         });
 }
 
